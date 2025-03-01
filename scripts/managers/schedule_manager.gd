@@ -328,7 +328,7 @@ func assign_employee_to_shift(shift_id: String, employee_id: String, is_coverage
 func check_rule_applies(rule: Dictionary, employee_id: String, shift: Shift) -> bool:
 	# Helper to check if a specific OT rule applies
 	# Implementation would check the various conditions based on rule type
-	pass
+	return false
 
 func assign_employee_to_line(line_id: String, employee_id: String) -> bool:
 	var result = current_schedule.assign_employee_to_line(line_id, employee_id)

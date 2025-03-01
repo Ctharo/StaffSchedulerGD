@@ -1,6 +1,4 @@
-# ui/schedule/scheduler.gd
-class_name Scheduler extends Control
-
+extends Node
 var schedule_manager: ScheduleManager
 
 # UI References
@@ -16,6 +14,4 @@ func _ready():
 	calendar_view.schedule_manager = schedule_manager
 
 func connect_signals():
-	calendar_view.connect("day_selected", _on_day_selected)
-	calendar_view.connect("shift_selected", _on_shift_selected)
-	generate_shifts_button.connect("
+	pass
