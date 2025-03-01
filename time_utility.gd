@@ -198,3 +198,6 @@ static func add_hours_to_datetime(datetime: Dictionary, hours: int) -> Dictionar
 	var unix_time = Time.get_unix_time_from_datetime_dict(datetime)
 	unix_time += hours * 3600  # 3600 seconds in an hour
 	return Time.get_datetime_dict_from_unix_time(unix_time)
+	
+static func format_date(date: Dictionary):
+	return ""
