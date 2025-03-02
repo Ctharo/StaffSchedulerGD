@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/employees/employee_detail.gd" id="1_a1yxq"]
+[ext_resource type="PackedScene" path="res://scenes/ui/common/navigation_bar.tscn" id="2_t0qne"]
+
+[node name="EmployeeDetail" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a1yxq")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.945098, 0.952941, 0.964706, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NavigationBar" parent="VBoxContainer" instance=ExtResource("2_t0qne")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="InfoSection" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/InfoSection"]
+layout_mode = 2
+
+[node name="SectionTitle" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/InfoSection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Employee Information"
+horizontal_alignment = 1
+
+[node name="InfoGrid" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/InfoSection"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="AvailabilitySection" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/AvailabilitySection"]
+layout_mode = 2
+
+[node name="SectionTitle" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AvailabilitySection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Availability"
+horizontal_alignment = 1
+
+[node name="AvailabilityGrid" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/AvailabilitySection"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="ButtonPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/ButtonPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "Save Changes"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/ButtonPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "Cancel"

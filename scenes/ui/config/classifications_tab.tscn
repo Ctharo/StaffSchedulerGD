@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkj883wl4eige"]
+
+[ext_resource type="Script" uid="uid://darbldpyhkjhc" path="res://scripts/ui/config/classifications_tab.gd" id="1_rctfm"]
+
+[node name="ClassificationsTab" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rctfm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="ClassificationsPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ClassificationsPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ClassificationsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Staff Classifications"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="HBoxContainer/ClassificationsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+text = "Classifications define staff roles (e.g. RN, LPN, CA)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ClassificationsList" type="ItemList" parent="HBoxContainer/ClassificationsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 3
+item_0/text = "RN"
+item_1/text = "LPN"
+item_2/text = "CA"
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="HBoxContainer/ClassificationsPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="AddClassificationButton" type="Button" parent="HBoxContainer/ClassificationsPanel/ButtonsContainer"]
+layout_mode = 2
+text = "Add Classification"
+
+[node name="RemoveClassificationButton" type="Button" parent="HBoxContainer/ClassificationsPanel/ButtonsContainer"]
+layout_mode = 2
+text = "Remove Classification"
+
+[node name="ClassificationDetailsPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ClassificationDetailsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DetailsTitleLabel" type="Label" parent="HBoxContainer/ClassificationDetailsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Classification Details"
+horizontal_alignment = 1
+
+[node name="ClassificationEdit" type="LineEdit" parent="HBoxContainer/ClassificationDetailsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Classification Name"
+
+[node name="InfoContainer" type="VBoxContainer" parent="HBoxContainer/ClassificationDetailsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ClassificationDetailsPanel/VBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Quick Tips:"
+
+[node name="TipsList" type="RichTextLabel" parent="HBoxContainer/ClassificationDetailsPanel/VBoxContainer/InfoContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "• Keep classification names short and clear
+• Common healthcare examples: RN, LPN, CA
+• Common retail examples: Manager, Supervisor, Associate
+• Staff will be assigned a classification when added
+• Shift requirements are based on classifications"
+fit_content = true
+autowrap_mode = 2
+
+[node name="SaveButton" type="Button" parent="HBoxContainer/ClassificationDetailsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+disabled = true
+text = "Save Classification"

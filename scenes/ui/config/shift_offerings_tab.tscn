@@ -1,0 +1,167 @@
+[gd_scene load_steps=2 format=3 uid="uid://db26fkcabq0hu"]
+
+[ext_resource type="Script" uid="uid://du2rxgrxlxsh6" path="res://scripts/ui/config/shift_offerings_tab.gd" id="1_u8rgt"]
+
+[node name="ShiftOfferingsTab" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8rgt")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="TiersPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TiersPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/TiersPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Offering Tiers"
+horizontal_alignment = 1
+
+[node name="TiersList" type="ItemList" parent="HSplitContainer/TiersPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="HSplitContainer/TiersPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="AddTierButton" type="Button" parent="HSplitContainer/TiersPanel/ButtonsContainer"]
+layout_mode = 2
+text = "Add Tier"
+
+[node name="RemoveTierButton" type="Button" parent="HSplitContainer/TiersPanel/ButtonsContainer"]
+layout_mode = 2
+text = "Remove Tier"
+
+[node name="TierDetailsPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/TierDetailsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="DetailsTitleLabel" type="Label" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Tier Details"
+horizontal_alignment = 1
+
+[node name="NameSection" type="PanelContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
+layout_mode = 2
+text = "Tier Name"
+
+[node name="NameEdit" type="LineEdit" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Tier Name (e.g. Straight Time Staff)"
+
+[node name="PrioritySection" type="PanelContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/PrioritySection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/PrioritySection/VBoxContainer"]
+layout_mode = 2
+text = "Priority (lower numbers are offered first)"
+
+[node name="PrioritySpin" type="SpinBox" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/PrioritySection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 20.0
+value = 1.0
+
+[node name="AdvanceDaysSection" type="PanelContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AdvanceDaysSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AdvanceDaysSection/VBoxContainer"]
+layout_mode = 2
+text = "Days in Advance to Offer"
+
+[node name="AdvanceDaysSpin" type="SpinBox" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AdvanceDaysSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 30.0
+value = 7.0
+
+[node name="AutoResolveSection" type="PanelContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AutoResolveSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AutoResolveSection/VBoxContainer"]
+layout_mode = 2
+text = "Hours Until Auto-Resolve"
+
+[node name="AutoResolveSpin" type="SpinBox" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AutoResolveSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 168.0
+value = 24.0
+
+[node name="ConditionsSection" type="PanelContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/ConditionsSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/ConditionsSection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Conditions"
+
+[node name="ConditionsContainer" type="VBoxContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/ConditionsSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AddConditionButton" type="Button" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/ConditionsSection"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Add Condition"
+
+[node name="SaveSection" type="PanelContainer" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/SaveSection"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+disabled = true
+text = "Save Tier"

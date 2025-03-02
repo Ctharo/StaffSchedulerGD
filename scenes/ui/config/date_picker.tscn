@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://xfdpsjaehefb"]
+
+[ext_resource type="Script" uid="uid://b8ouus2t5qjrs" path="res://scripts/ui/config/date_picker.gd" id="1_47dfx"]
+
+[node name="DatePicker" type="HBoxContainer"]
+offset_right = 312.0
+offset_bottom = 31.0
+theme_override_constants/separation = 10
+script = ExtResource("1_47dfx")
+
+[node name="YearLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Year:"
+
+[node name="YearSpin" type="SpinBox" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = 2020.0
+max_value = 2100.0
+value = 2025.0
+alignment = 1
+
+[node name="MonthLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Month:"
+
+[node name="MonthOption" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+selected = 2
+item_count = 12
+popup/item_0/text = "January"
+popup/item_0/id = 0
+popup/item_1/text = "February"
+popup/item_1/id = 1
+popup/item_2/text = "March"
+popup/item_2/id = 2
+popup/item_3/text = "April"
+popup/item_3/id = 3
+popup/item_4/text = "May"
+popup/item_4/id = 4
+popup/item_5/text = "June"
+popup/item_5/id = 5
+popup/item_6/text = "July"
+popup/item_6/id = 6
+popup/item_7/text = "August"
+popup/item_7/id = 7
+popup/item_8/text = "September"
+popup/item_8/id = 8
+popup/item_9/text = "October"
+popup/item_9/id = 9
+popup/item_10/text = "November"
+popup/item_10/id = 10
+popup/item_11/text = "December"
+popup/item_11/id = 11
+
+[node name="DayLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Day:"
+
+[node name="DaySpin" type="SpinBox" parent="."]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+alignment = 1

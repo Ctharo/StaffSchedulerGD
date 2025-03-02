@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://7bhxo5n1qm0b"]
+
+[ext_resource type="Script" uid="uid://c646lve30gpoo" path="res://scripts/ui/landing_page.gd" id="1_lfd5a"]
+
+[node name="LandingPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfd5a")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.937, 0.945, 0.96, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TitlePanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TitlePanel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TitlePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "StaffScheduler"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="VBoxContainer/TitlePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "Staff Scheduler for Healthcare"
+horizontal_alignment = 1
+
+[node name="ButtonsPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ButtonsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CalendarButton" type="Button" parent="VBoxContainer/ButtonsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Schedule Calendar"
+
+[node name="EmployeesButton" type="Button" parent="VBoxContainer/ButtonsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Employee Manager"
+
+[node name="ConfigButton" type="Button" parent="VBoxContainer/ButtonsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Configuration"
+
+[node name="ReportsButton" type="Button" parent="VBoxContainer/ButtonsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Reports"
+
+[node name="StatusBar" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/StatusBar"]
+layout_mode = 2
+text = "Ready."

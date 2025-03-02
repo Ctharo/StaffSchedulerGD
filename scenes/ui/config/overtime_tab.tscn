@@ -1,0 +1,187 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce3gulwmex3ym"]
+
+[ext_resource type="Script" uid="uid://dkam1haooh140" path="res://scripts/ui/config/overtime_tab.gd" id="1_nfmg2"]
+
+[node name="OvertimeTab" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nfmg2")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="RulesPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RulesPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/RulesPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Overtime Rules"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="HSplitContainer/RulesPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+text = "Define when overtime pay applies"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RulesList" type="ItemList" parent="HSplitContainer/RulesPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 4
+item_0/text = "Daily OT"
+item_1/text = "Weekly OT"
+item_2/text = "Pay Period OT"
+item_3/text = "Consecutive Days"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/RulesPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="AddRuleButton" type="Button" parent="HSplitContainer/RulesPanel/HBoxContainer"]
+layout_mode = 2
+text = "Add Rule"
+
+[node name="RemoveRuleButton" type="Button" parent="HSplitContainer/RulesPanel/HBoxContainer"]
+layout_mode = 2
+text = "Remove Rule"
+
+[node name="RuleDetailsPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/RuleDetailsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="DetailsTitleLabel" type="Label" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Rule Details"
+horizontal_alignment = 1
+
+[node name="NameSection" type="PanelContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
+layout_mode = 2
+text = "Rule Name"
+
+[node name="NameEdit" type="LineEdit" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Rule Name (e.g. Daily OT)"
+
+[node name="TypeSection" type="PanelContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/TypeSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/TypeSection/VBoxContainer"]
+layout_mode = 2
+text = "Rule Type"
+
+[node name="TypeOption" type="OptionButton" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/TypeSection"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 4
+popup/item_0/text = "Daily"
+popup/item_0/id = 0
+popup/item_1/text = "Weekly"
+popup/item_1/id = 1
+popup/item_2/text = "Pay Period"
+popup/item_2/id = 2
+popup/item_3/text = "Consecutive Days"
+popup/item_3/id = 3
+
+[node name="ThresholdSection" type="PanelContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/ThresholdSection"]
+layout_mode = 2
+
+[node name="ThresholdLabel" type="Label" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/ThresholdSection/VBoxContainer"]
+layout_mode = 2
+text = "Hours per Day:"
+
+[node name="ThresholdSpin" type="SpinBox" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/ThresholdSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 168.0
+value = 8.0
+
+[node name="MultiplierSection" type="PanelContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/MultiplierSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/MultiplierSection/VBoxContainer"]
+layout_mode = 2
+text = "Pay Multiplier"
+
+[node name="MultiplierSpin" type="SpinBox" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/MultiplierSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 3.0
+step = 0.5
+value = 1.5
+
+[node name="InfoSection" type="PanelContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/InfoSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/InfoSection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Rule Description"
+
+[node name="InfoLabel" type="RichTextLabel" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/InfoSection"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Daily OT rule applies overtime pay when an employee works more than the specified number of hours in a single day, regardless of total hours in the week or pay period."
+fit_content = true
+autowrap_mode = 2
+
+[node name="SaveSection" type="PanelContainer" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/SaveSection"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+disabled = true
+text = "Save Rule"

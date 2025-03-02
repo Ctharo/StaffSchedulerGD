@@ -141,9 +141,7 @@ func _on_prev_button_pressed():
 	update_calendar()
 
 func _on_next_button_pressed():
-	# Move to next week/month
-	# Similar logic to prev button but adding days instead
-	# ...
+	pass
 
 func _on_view_mode_changed(index):
 	view_mode = view_mode_option.get_item_metadata(index)

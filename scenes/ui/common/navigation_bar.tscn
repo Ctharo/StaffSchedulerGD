@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwltwoexcf05o"]
+
+[ext_resource type="Script" uid="uid://bjuiamqdudec" path="res://scripts/ui/common/navigation_bar.gd" id="1_jn46t"]
+
+[node name="NavigationBar" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_jn46t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "< Back"
+
+[node name="HomeButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Home"
+
+[node name="ScreenTitle" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Screen Title"
+horizontal_alignment = 1
+vertical_alignment = 1

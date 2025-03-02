@@ -1,0 +1,263 @@
+[gd_scene load_steps=2 format=3 uid="uid://cos0yqiax2w8s"]
+
+[ext_resource type="Script" uid="uid://dke2hmt801rkx" path="res://scripts/ui/config/shift_patterns_tab.gd" id="1_j7d3v"]
+
+[node name="ShiftPatternsTab" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j7d3v")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="PatternsPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternsPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Shift Patterns"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="HSplitContainer/PatternsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+text = "Patterns define recurring shift schedules"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PatternsList" type="ItemList" parent="HSplitContainer/PatternsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 3
+item_0/text = "RN Day Line 1"
+item_1/text = "LPN Evening Line 2"
+item_2/text = "CA Night Line 3"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/PatternsPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="AddPatternButton" type="Button" parent="HSplitContainer/PatternsPanel/HBoxContainer"]
+layout_mode = 2
+text = "Add Pattern"
+
+[node name="RemovePatternButton" type="Button" parent="HSplitContainer/PatternsPanel/HBoxContainer"]
+layout_mode = 2
+text = "Remove Pattern"
+
+[node name="PatternDetailsPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/PatternDetailsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="DetailsTitleLabel" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pattern Details"
+horizontal_alignment = 1
+
+[node name="NameSection" type="PanelContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
+layout_mode = 2
+text = "Pattern Name"
+
+[node name="NameEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Pattern Name (e.g. RN Day Line 1)"
+
+[node name="SiteSection" type="PanelContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SiteSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SiteSection/VBoxContainer"]
+layout_mode = 2
+text = "Site"
+
+[node name="SiteOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SiteSection"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 2
+popup/item_0/text = "Rotary Hospice House"
+popup/item_0/id = 0
+popup/item_1/text = "Home Hospice"
+popup/item_1/id = 1
+
+[node name="ClassificationSection" type="PanelContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection/VBoxContainer"]
+layout_mode = 2
+text = "Classification"
+
+[node name="ClassificationOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "RN"
+popup/item_0/id = 0
+popup/item_1/text = "LPN"
+popup/item_1/id = 1
+popup/item_2/text = "CA"
+popup/item_2/id = 2
+
+[node name="LengthSection" type="PanelContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/LengthSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/LengthSection/VBoxContainer"]
+layout_mode = 2
+text = "Pattern Length (days)"
+
+[node name="LengthSpin" type="SpinBox" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/LengthSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 42.0
+value = 7.0
+
+[node name="PatternSection" type="PanelContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Pattern Schedule"
+
+[node name="PatternGrid" type="GridContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Day1Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+layout_mode = 2
+text = "Day 1 (Sunday):"
+
+[node name="Day1Container" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+layout_mode = 2
+
+[node name="ShiftOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Day"
+popup/item_1/id = 1
+popup/item_2/text = "Evening"
+popup/item_2/id = 2
+popup/item_3/text = "Night"
+popup/item_3/id = 3
+
+[node name="TimesContainer" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container"]
+visible = false
+layout_mode = 2
+
+[node name="StartTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container/TimesContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+placeholder_text = "07:00"
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container/TimesContainer"]
+layout_mode = 2
+text = "to"
+
+[node name="EndTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container/TimesContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+placeholder_text = "19:00"
+
+[node name="Day2Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+layout_mode = 2
+text = "Day 2 (Monday):"
+
+[node name="Day2Container" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+layout_mode = 2
+
+[node name="ShiftOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container"]
+layout_mode = 2
+selected = 1
+item_count = 4
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Day"
+popup/item_1/id = 1
+popup/item_2/text = "Evening"
+popup/item_2/id = 2
+popup/item_3/text = "Night"
+popup/item_3/id = 3
+
+[node name="TimesContainer" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container"]
+layout_mode = 2
+
+[node name="StartTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container/TimesContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "07:00"
+placeholder_text = "07:00"
+
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container/TimesContainer"]
+layout_mode = 2
+text = "to"
+
+[node name="EndTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container/TimesContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "19:00"
+placeholder_text = "19:00"
+
+[node name="SaveSection" type="PanelContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SaveSection"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+disabled = true
+text = "Save Pattern"

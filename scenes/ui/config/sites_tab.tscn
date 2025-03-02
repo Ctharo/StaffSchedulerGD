@@ -1,0 +1,143 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdod0j718vc6r"]
+
+[ext_resource type="Script" uid="uid://n5xq7mfta560" path="res://scripts/ui/config/sites_tab.gd" id="1_rt5a8"]
+
+[node name="SitesTab" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rt5a8")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="SitesPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SitesPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/SitesPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Sites"
+horizontal_alignment = 1
+
+[node name="SitesList" type="ItemList" parent="HSplitContainer/SitesPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="HSplitContainer/SitesPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="AddSiteButton" type="Button" parent="HSplitContainer/SitesPanel/ButtonsContainer"]
+layout_mode = 2
+text = "Add Site"
+
+[node name="RemoveSiteButton" type="Button" parent="HSplitContainer/SitesPanel/ButtonsContainer"]
+layout_mode = 2
+text = "Remove Site"
+
+[node name="SiteDetailsPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/SiteDetailsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="DetailsTitleLabel" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Site Details"
+horizontal_alignment = 1
+
+[node name="IDSection" type="PanelContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection/VBoxContainer"]
+layout_mode = 2
+text = "Site ID"
+
+[node name="IDEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Site ID (e.g. MAIN)"
+
+[node name="NameSection" type="PanelContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
+layout_mode = 2
+text = "Site Name"
+
+[node name="NameEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Site Name (e.g. Main Hospital)"
+
+[node name="AddressSection" type="PanelContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection/VBoxContainer"]
+layout_mode = 2
+text = "Address"
+
+[node name="AddressEdit" type="TextEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Site Address"
+
+[node name="PhoneSection" type="PanelContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection/VBoxContainer"]
+layout_mode = 2
+text = "Phone"
+
+[node name="PhoneEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "(555) 555-5555"
+
+[node name="SaveSection" type="PanelContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/SaveSection"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+disabled = true
+text = "Save Site"

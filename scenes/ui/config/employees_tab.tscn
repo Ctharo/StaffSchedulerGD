@@ -1,0 +1,279 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7avu6pamx7ch"]
+
+[ext_resource type="Script" uid="uid://c28qv6cd21mjs" path="res://scripts/ui/config/employees_tab.gd" id="1_qcq23"]
+
+[node name="EmployeesTab" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qcq23")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="EmployeesPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeesPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeesPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Employees"
+horizontal_alignment = 1
+
+[node name="SearchBar" type="LineEdit" parent="HSplitContainer/EmployeesPanel/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Search employees..."
+clear_button_enabled = true
+
+[node name="EmployeesList" type="ItemList" parent="HSplitContainer/EmployeesPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 4
+item_0/text = "Smith, John (RN)"
+item_1/text = "Johnson, Mary (LPN)"
+item_2/text = "Davis, Robert (CA)"
+item_3/text = "Wilson, Sarah (RN)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/EmployeesPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="AddEmployeeButton" type="Button" parent="HSplitContainer/EmployeesPanel/HBoxContainer"]
+layout_mode = 2
+text = "Add Employee"
+
+[node name="RemoveEmployeeButton" type="Button" parent="HSplitContainer/EmployeesPanel/HBoxContainer"]
+layout_mode = 2
+text = "Remove Employee"
+
+[node name="EmployeeDetailsPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/EmployeeDetailsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="DetailsTitleLabel" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Employee Details"
+horizontal_alignment = 1
+
+[node name="FirstNameSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FirstNameSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FirstNameSection/VBoxContainer"]
+layout_mode = 2
+text = "First Name"
+
+[node name="FirstNameEdit" type="LineEdit" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FirstNameSection"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "First Name"
+
+[node name="LastNameSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/LastNameSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/LastNameSection/VBoxContainer"]
+layout_mode = 2
+text = "Last Name"
+
+[node name="LastNameEdit" type="LineEdit" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/LastNameSection"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Last Name"
+
+[node name="EmailSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmailSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmailSection/VBoxContainer"]
+layout_mode = 2
+text = "Email"
+
+[node name="EmailEdit" type="LineEdit" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmailSection"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Email"
+
+[node name="PhoneSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection/VBoxContainer"]
+layout_mode = 2
+text = "Phone"
+
+[node name="PhoneEdit" type="LineEdit" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Phone"
+
+[node name="ClassificationSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection/VBoxContainer"]
+layout_mode = 2
+text = "Classification"
+
+[node name="ClassificationOption" type="OptionButton" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "RN"
+popup/item_0/id = 0
+popup/item_1/text = "LPN"
+popup/item_1/id = 1
+popup/item_2/text = "CA"
+popup/item_2/id = 2
+
+[node name="EmploymentStatusSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmploymentStatusSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmploymentStatusSection/VBoxContainer"]
+layout_mode = 2
+text = "Employment Status"
+
+[node name="StatusOption" type="OptionButton" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmploymentStatusSection"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "Full Time"
+popup/item_0/id = 0
+popup/item_1/text = "Part Time"
+popup/item_1/id = 1
+popup/item_2/text = "Casual"
+popup/item_2/id = 2
+
+[node name="FTESection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FTESection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FTESection/VBoxContainer"]
+layout_mode = 2
+text = "FTE (Full-Time Equivalent)"
+
+[node name="FTESpin" type="SpinBox" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FTESection"]
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="MaxHoursSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/MaxHoursSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/MaxHoursSection/VBoxContainer"]
+layout_mode = 2
+text = "Maximum Hours per Week"
+
+[node name="MaxHoursSpin" type="SpinBox" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/MaxHoursSection"]
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 1.0
+max_value = 168.0
+value = 40.0
+
+[node name="SitePreferencesSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection/VBoxContainer"]
+layout_mode = 2
+text = "Site Preferences"
+
+[node name="SitePreferencesContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection/SitePreferencesContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection/SitePreferencesContainer/HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Rotary Hospice House"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection/SitePreferencesContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection/SitePreferencesContainer/HBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "Home Hospice"
+
+[node name="AvailabilitySection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/AvailabilitySection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/AvailabilitySection/VBoxContainer"]
+layout_mode = 2
+text = "Availability"
+
+[node name="EditAvailabilityButton" type="Button" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/AvailabilitySection"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Edit Availability Schedule"
+
+[node name="SaveSection" type="PanelContainer" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SaveSection"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+disabled = true
+text = "Save Employee"
