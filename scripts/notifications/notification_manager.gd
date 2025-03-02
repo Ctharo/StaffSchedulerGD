@@ -158,7 +158,7 @@ func get_unread_count() -> int:
 	
 	for notification in notifications:
 		if not notification.read and \
-		   (!notification.expiry or notification.expiry_time >= current_time) and \
+		   (!notification.expiry or notification.expiry_time >= current_time) and\
 		   should_show_to_user(notification):
 			count += 1
 	

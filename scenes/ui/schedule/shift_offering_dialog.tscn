@@ -1,0 +1,180 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/schedule/shift_offering_dialog.gd" id="1_k2yqb"]
+
+[node name="ShiftOfferingDialog" type="Window"]
+title = "Offer Shift"
+initial_position = 2
+size = Vector2i(600, 500)
+exclusive = true
+script = ExtResource("1_k2yqb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ShiftDetailsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Shift: RN at Site
+Monday, March 1 from 07:00 to 19:00"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StraightTimePanel" type="PanelContainer" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/OptionsContainer/StraightTimePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/OptionsContainer/StraightTimePanel/VBoxContainer"]
+layout_mode = 2
+text = "Straight Time"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/OptionsContainer/StraightTimePanel"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+button_pressed = true
+
+[node name="OvertimePanel" type="PanelContainer" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/OptionsContainer/OvertimePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/OptionsContainer/OvertimePanel/VBoxContainer"]
+layout_mode = 2
+text = "Overtime"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/OptionsContainer/OvertimePanel"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+button_pressed = true
+
+[node name="DeadlinePanel" type="PanelContainer" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/OptionsContainer/DeadlinePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/OptionsContainer/DeadlinePanel/VBoxContainer"]
+layout_mode = 2
+text = "Response Deadline (hours)"
+horizontal_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/OptionsContainer/DeadlinePanel"]
+layout_mode = 2
+min_value = 1.0
+max_value = 168.0
+value = 24.0
+alignment = 1
+
+[node name="StaffContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/StaffContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Staff Selection"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="EligiblePanel" type="PanelContainer" parent="VBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/StaffContainer/EligiblePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/StaffContainer/EligiblePanel/VBoxContainer"]
+layout_mode = 2
+text = "Eligible Staff"
+horizontal_alignment = 1
+
+[node name="StaffList" type="ItemList" parent="VBoxContainer/StaffContainer/EligiblePanel"]
+layout_mode = 2
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 4
+item_0/text = "Smith, John"
+item_1/text = "Johnson, Mary (OT)"
+item_2/text = "Davis, Robert"
+item_3/text = "Wilson, Sarah"
+
+[node name="ButtonsPanel" type="VBoxContainer" parent="VBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="AddButton" type="Button" parent="VBoxContainer/StaffContainer/ButtonsPanel"]
+layout_mode = 2
+text = ">"
+
+[node name="RemoveButton" type="Button" parent="VBoxContainer/StaffContainer/ButtonsPanel"]
+layout_mode = 2
+text = "<"
+
+[node name="SelectedPanel" type="PanelContainer" parent="VBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/StaffContainer/SelectedPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/StaffContainer/SelectedPanel/VBoxContainer"]
+layout_mode = 2
+text = "Selected Staff"
+horizontal_alignment = 1
+
+[node name="StaffList" type="ItemList" parent="VBoxContainer/StaffContainer/SelectedPanel"]
+layout_mode = 2
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonsPanel" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CreateButton" type="Button" parent="VBoxContainer/ButtonsPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Create Offer"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/ButtonsPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Cancel"
