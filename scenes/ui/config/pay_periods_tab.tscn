@@ -39,6 +39,7 @@ theme_override_font_sizes/font_size = 16
 text = "Pay Period Type"
 
 [node name="TypeOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/TypeSection"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -71,6 +72,7 @@ text = "Only applies to weekly and biweekly pay periods"
 autowrap_mode = 3
 
 [node name="StartDayOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/StartDaySection"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -103,6 +105,7 @@ theme_override_font_sizes/font_size = 16
 text = "First Pay Period Start Date"
 
 [node name="StartDatePicker" parent="ScrollContainer/VBoxContainer/StartDateSection" instance=ExtResource("2_ktb35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -119,6 +122,7 @@ theme_override_font_sizes/font_size = 16
 text = "Generated Pay Periods"
 
 [node name="PeriodsList" type="ItemList" parent="ScrollContainer/VBoxContainer/PeriodsSection"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 allow_reselect = true
@@ -137,11 +141,13 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="RegenerateButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonsSection/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 text = "Regenerate Pay Periods"
 
 [node name="SaveButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonsSection/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 text = "Save Settings"
