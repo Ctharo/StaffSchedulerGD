@@ -5,14 +5,14 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var rules_list = $HSplitContainer/RulesPanel/RulesList
-@onready var add_rule_button = $HSplitContainer/RulesPanel/AddRuleButton
-@onready var remove_rule_button = $HSplitContainer/RulesPanel/RemoveRuleButton
-@onready var rule_name_edit = $HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/NameSection/NameEdit
-@onready var rule_type_option = $HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/TypeSection/TypeOption
-@onready var threshold_spin = $HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/ThresholdSection/ThresholdSpin
-@onready var multiplier_spin = $HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/MultiplierSection/MultiplierSpin
-@onready var save_rule_button = $HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/SaveSection/SaveButton
+@onready var rules_list = %RulesList
+@onready var add_rule_button = %AddRuleButton
+@onready var remove_rule_button = %RemoveRuleButton
+@onready var rule_name_edit = %NameEdit
+@onready var rule_type_option = %TypeOption
+@onready var threshold_spin = %ThresholdSpin
+@onready var multiplier_spin = %MultiplierSpin
+@onready var save_rule_button = %SaveButton
 
 # Currently selected rule
 var selected_rule_idx = -1
