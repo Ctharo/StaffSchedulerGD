@@ -12,16 +12,16 @@ var selected_site_id: String = ""
 var selected_classification: String = ""
 
 # UI References
-@onready var navigation_bar = $VBoxContainer/NavigationBar
-@onready var calendar_grid = $VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/CalendarGrid
-@onready var month_label = $VBoxContainer/Header/MarginContainer/HBoxContainer/MonthLabel
-@onready var prev_button = $VBoxContainer/Header/MarginContainer/HBoxContainer/PrevButton
-@onready var next_button = $VBoxContainer/Header/MarginContainer/HBoxContainer/NextButton
-@onready var today_button = $VBoxContainer/Filters/MarginContainer/HBoxContainer/TodayButton
-@onready var view_mode_option = $VBoxContainer/Header/MarginContainer/HBoxContainer/ViewModeOption
-@onready var site_filter = $VBoxContainer/Filters/MarginContainer/HBoxContainer/SiteFilter
-@onready var classification_filter = $VBoxContainer/Filters/MarginContainer/HBoxContainer/ClassificationFilter
-@onready var status_label = $VBoxContainer/StatusBar/StatusLabel
+@onready var navigation_bar = %NavigationBar
+@onready var calendar_grid = %CalendarGrid
+@onready var month_label = %MonthLabel
+@onready var prev_button = %PrevButton
+@onready var next_button = %NextButton
+@onready var today_button = %TodayButton
+@onready var view_mode_option = %ViewModeOption
+@onready var site_filter = %SiteFilter
+@onready var classification_filter = %ClassificationFilter
+@onready var status_label = %StatusLabel
 
 func _ready():
 	# Initialize date

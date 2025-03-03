@@ -33,9 +33,12 @@ func _ready():
 	loading_screen.connect("setup_employees", _on_setup_employees)
 	
 	# Connect ScheduleManager signals
-	schedule_manager.organization_loaded.connect(_on_organization_loaded)
-	schedule_manager.schedule_loaded.connect(_on_schedule_loaded)
-	schedule_manager.configuration_error.connect(_on_configuration_error)
+	if not schedule_manager.organization_loaded.is_connected(_on_organization_loaded):
+		schedule_manager.organization_loaded.connect(_on_organization_loaded)
+	if not schedule_manager.schedule_loaded.is_connected(_on_schedule_loaded):
+		schedule_manager.schedule_loaded.connect(_on_schedule_loaded)
+	if not schedule_manager.configuration_error.is_connected(_on_configuration_error):
+		schedule_manager.configuration_error.connect(_on_configuration_error)
 	
 	# Connect NavigationManager signals
 	nav_manager.screen_changed.connect(_on_screen_changed)

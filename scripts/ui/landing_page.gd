@@ -17,10 +17,14 @@ var schedule_manager: ScheduleManager
 
 func _ready():
 	# Connect signals
-	calendar_button.connect("pressed", _on_calendar_button_pressed)
-	employees_button.connect("pressed", _on_employees_button_pressed)
-	config_button.connect("pressed", _on_config_button_pressed)
-	reports_button.connect("pressed", _on_reports_button_pressed)
+	if not calendar_button.pressed.is_connected(_on_calendar_button_pressed):
+		calendar_button.connect("pressed", _on_calendar_button_pressed)
+	if not employees_button.pressed.is_connected(_on_employees_button_pressed):
+		employees_button.connect("pressed", _on_employees_button_pressed)
+	if not config_button.pressed.is_connected(_on_config_button_pressed):
+		config_button.connect("pressed", _on_config_button_pressed)
+	if not reports_button.pressed.is_connected(_on_reports_button_pressed):
+		reports_button.connect("pressed", _on_reports_button_pressed)
 	
 	# Set app info
 	var organization_name = "Default Organization"

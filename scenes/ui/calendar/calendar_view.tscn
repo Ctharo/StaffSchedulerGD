@@ -40,7 +40,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.95, 0.95, 0.97, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainLayout" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,42 +50,49 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="NavigationBar" parent="VBoxContainer" instance=ExtResource("2_r13kb")]
+[node name="NavigationBar" parent="MainLayout" instance=ExtResource("2_r13kb")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Header" type="PanelContainer" parent="VBoxContainer"]
+[node name="HeaderPanel" type="PanelContainer" parent="MainLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jk68l")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
+[node name="HeaderMargin" type="MarginContainer" parent="MainLayout/HeaderPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
+[node name="HeaderControls" type="HBoxContainer" parent="MainLayout/HeaderPanel/HeaderMargin"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PrevButton" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="PrevButton" type="Button" parent="MainLayout/HeaderPanel/HeaderMargin/HeaderControls"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "<"
 
-[node name="MonthLabel" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="MonthLabel" type="Label" parent="MainLayout/HeaderPanel/HeaderMargin/HeaderControls"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
 text = "March 2025"
 horizontal_alignment = 1
 
-[node name="NextButton" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="NextButton" type="Button" parent="MainLayout/HeaderPanel/HeaderMargin/HeaderControls"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = ">"
 
-[node name="ViewModeOption" type="OptionButton" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="ViewModeOption" type="OptionButton" parent="MainLayout/HeaderPanel/HeaderMargin/HeaderControls"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 selected = 1
@@ -96,116 +104,127 @@ popup/item_1/id = 1
 popup/item_2/text = "Month"
 popup/item_2/id = 2
 
-[node name="Filters" type="PanelContainer" parent="VBoxContainer"]
+[node name="FiltersPanel" type="PanelContainer" parent="MainLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jk68l")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Filters"]
+[node name="FiltersMargin" type="MarginContainer" parent="MainLayout/FiltersPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Filters/MarginContainer"]
+[node name="FiltersControls" type="HBoxContainer" parent="MainLayout/FiltersPanel/FiltersMargin"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SiteLabel" type="Label" parent="VBoxContainer/Filters/MarginContainer/HBoxContainer"]
+[node name="SiteLabel" type="Label" parent="MainLayout/FiltersPanel/FiltersMargin/FiltersControls"]
 layout_mode = 2
 text = "Site:"
 
-[node name="SiteFilter" type="OptionButton" parent="VBoxContainer/Filters/MarginContainer/HBoxContainer"]
+[node name="SiteFilter" type="OptionButton" parent="MainLayout/FiltersPanel/FiltersMargin/FiltersControls"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 
-[node name="HSpacer" type="Control" parent="VBoxContainer/Filters/MarginContainer/HBoxContainer"]
+[node name="HSpacer" type="Control" parent="MainLayout/FiltersPanel/FiltersMargin/FiltersControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ClassificationLabel" type="Label" parent="VBoxContainer/Filters/MarginContainer/HBoxContainer"]
+[node name="ClassificationLabel" type="Label" parent="MainLayout/FiltersPanel/FiltersMargin/FiltersControls"]
 layout_mode = 2
 text = "Classification:"
 
-[node name="ClassificationFilter" type="OptionButton" parent="VBoxContainer/Filters/MarginContainer/HBoxContainer"]
+[node name="ClassificationFilter" type="OptionButton" parent="MainLayout/FiltersPanel/FiltersMargin/FiltersControls"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="TodayButton" type="Button" parent="VBoxContainer/Filters/MarginContainer/HBoxContainer"]
+[node name="TodayButton" type="Button" parent="MainLayout/FiltersPanel/FiltersMargin/FiltersControls"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Today"
 
-[node name="CalendarContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="CalendarPanel" type="PanelContainer" parent="MainLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_2x7pg")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CalendarContainer"]
+[node name="CalendarMargin" type="MarginContainer" parent="MainLayout/CalendarPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CalendarContainer/MarginContainer"]
+[node name="CalendarContent" type="VBoxContainer" parent="MainLayout/CalendarPanel/CalendarMargin"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DayLabels" type="GridContainer" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer"]
+[node name="DayLabels" type="GridContainer" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent"]
+unique_name_in_owner = true
 layout_mode = 2
 columns = 7
 
-[node name="SundayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="SundayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Sunday"
 horizontal_alignment = 1
 
-[node name="MondayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="MondayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Monday"
 horizontal_alignment = 1
 
-[node name="TuesdayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="TuesdayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tuesday"
 horizontal_alignment = 1
 
-[node name="WednesdayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="WednesdayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Wednesday"
 horizontal_alignment = 1
 
-[node name="ThursdayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="ThursdayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Thursday"
 horizontal_alignment = 1
 
-[node name="FridayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="FridayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Friday"
 horizontal_alignment = 1
 
-[node name="SaturdayLabel" type="Label" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer/DayLabels"]
+[node name="SaturdayLabel" type="Label" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent/DayLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Saturday"
 horizontal_alignment = 1
 
-[node name="CalendarGrid" type="GridContainer" parent="VBoxContainer/CalendarContainer/MarginContainer/VBoxContainer"]
+[node name="CalendarGrid" type="GridContainer" parent="MainLayout/CalendarPanel/CalendarMargin/CalendarContent"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 7
 
-[node name="StatusBar" type="PanelContainer" parent="VBoxContainer"]
+[node name="StatusBar" type="PanelContainer" parent="MainLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer/StatusBar"]
+[node name="StatusLabel" type="Label" parent="MainLayout/StatusBar"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Ready."
