@@ -30,13 +30,14 @@ text = "Overtime Rules"
 horizontal_alignment = 1
 
 [node name="InfoLabel" type="Label" parent="HSplitContainer/RulesPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
 text = "Define when overtime pay applies"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="RulesList" type="ItemList" parent="HSplitContainer/RulesPanel"]
+[node name="RulesList" type="ItemList" parent="HSplitContainer/RulesPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -49,17 +50,17 @@ item_1/text = "Weekly OT"
 item_2/text = "Pay Period OT"
 item_3/text = "Consecutive Days"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/RulesPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/RulesPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 
-[node name="AddRuleButton" type="Button" parent="HSplitContainer/RulesPanel/HBoxContainer"]
+[node name="AddRuleButton" type="Button" parent="HSplitContainer/RulesPanel/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Add Rule"
 
-[node name="RemoveRuleButton" type="Button" parent="HSplitContainer/RulesPanel/HBoxContainer"]
+[node name="RemoveRuleButton" type="Button" parent="HSplitContainer/RulesPanel/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Remove Rule"
