@@ -9,7 +9,8 @@ var file_path: String = "user://schedule_data.tres"
 var current_organization: Organization
 var organization_file_path: String = "user://organization_config.tres"
 
-func _ready() -> void:
+
+func start_loading() -> void:
 	load_organization()
 	load_schedule()
 	if current_schedule.sites.is_empty():
@@ -31,6 +32,8 @@ func load_schedule() -> void:
 		current_schedule = Schedule.new()
 		initialize_basic_data()
 	schedule_loaded.emit()
+
+
 
 func save_schedule() -> void:
 	ResourceSaver.save(current_schedule, file_path)

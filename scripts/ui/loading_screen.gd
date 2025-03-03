@@ -26,6 +26,7 @@ var has_organization = false
 var has_sites = false
 var has_employees = false
 
+
 func _ready():
 	# Initialize UI state
 	progress_bar.value = 0
@@ -43,8 +44,14 @@ func _ready():
 		button_progress.value = 100
 		button_progress.visible = false
 
+# Update progress by incrementing the step
 func update_progress(message: String):
 	current_step += 1
+	set_progress(current_step, message)
+
+# Set the progress to a specific step (more robust for out-of-order signals)
+func set_progress(step: int, message: String):
+	current_step = step
 	progress_bar.value = current_step
 	status_label.text = message
 	

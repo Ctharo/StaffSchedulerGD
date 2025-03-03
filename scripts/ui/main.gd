@@ -47,6 +47,9 @@ func _start_loading_process():
 	# Update loading screen
 	loading_screen.update_progress("Loading application settings...")
 	
+	# Start the loading process AFTER all signal connections are established
+	schedule_manager.start_loading()
+	
 	# Check setup flags for the loading screen
 	var has_organization = schedule_manager.current_organization != null and not schedule_manager.current_organization.name.is_empty()
 	var has_sites = schedule_manager.current_schedule != null and not schedule_manager.current_schedule.sites.is_empty()
