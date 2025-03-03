@@ -3,6 +3,7 @@ class_name ScheduleManager extends Node
 signal organization_loaded
 signal schedule_loaded
 signal configuration_error
+signal schedule_saved
 
 var current_schedule: Schedule
 var file_path: String = "user://schedule_data.tres"
@@ -20,8 +21,10 @@ func _ready():
 	organization_file_path = save_path_manager.resolve_path("organization_config.tres")
 
 
-
-
+func start_loading():
+	load_organization()
+	load_schedule()
+	
 func load_organization() -> void:
 	if ResourceLoader.exists(organization_file_path):
 		current_organization = ResourceLoader.load(organization_file_path)
