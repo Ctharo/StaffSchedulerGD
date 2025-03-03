@@ -77,12 +77,9 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection/VBoxContainer"]
-layout_mode = 2
-text = "Site ID"
-
 [node name="IDEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 placeholder_text = "Site ID (e.g. MAIN)"
@@ -92,10 +89,6 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
-layout_mode = 2
-text = "Site Name"
 
 [node name="NameEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
 unique_name_in_owner = true
@@ -110,10 +103,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection/VBoxContainer"]
-layout_mode = 2
-text = "Address"
-
 [node name="AddressEdit" type="TextEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 80)
@@ -126,10 +115,6 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection/VBoxContainer"]
-layout_mode = 2
-text = "Phone"
 
 [node name="PhoneEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
 unique_name_in_owner = true

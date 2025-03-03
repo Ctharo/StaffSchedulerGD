@@ -3,14 +3,15 @@ extends Control
 var schedule_manager: ScheduleManager
 var nav_manager: NavigationManager
 
-# UI References
-@onready var content_container: = %ContentContainer
+# UI References using unique names
+@onready var content_container = %ContentContainer
 @onready var loading_screen = %LoadingScreen
 @onready var landing_page = %LandingPage
 @onready var calendar_view = %CalendarView
 @onready var config_manager = %ConfigManager
 @onready var employee_list = %EmployeeList
 @onready var employee_detail = %EmployeeDetail
+@onready var main_status_bar = %StatusBar
 @onready var status_label = %StatusLabel
 
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 	config_manager.visible = false
 	employee_list.visible = false
 	employee_detail.visible = false
+	main_status_bar.visible = false
 	
 	# Connect loading signals
 	loading_screen.connect("loading_complete", _on_loading_complete)
@@ -33,12 +35,9 @@ func _ready():
 	loading_screen.connect("setup_employees", _on_setup_employees)
 	
 	# Connect ScheduleManager signals
-	if not schedule_manager.organization_loaded.is_connected(_on_organization_loaded):
-		schedule_manager.organization_loaded.connect(_on_organization_loaded)
-	if not schedule_manager.schedule_loaded.is_connected(_on_schedule_loaded):
-		schedule_manager.schedule_loaded.connect(_on_schedule_loaded)
-	if not schedule_manager.configuration_error.is_connected(_on_configuration_error):
-		schedule_manager.configuration_error.connect(_on_configuration_error)
+	schedule_manager.organization_loaded.connect(_on_organization_loaded)
+	schedule_manager.schedule_loaded.connect(_on_schedule_loaded)
+	schedule_manager.configuration_error.connect(_on_configuration_error)
 	
 	# Connect NavigationManager signals
 	nav_manager.screen_changed.connect(_on_screen_changed)
@@ -132,6 +131,14 @@ func _on_screen_changed(screen_name: String, _previous_screen: String):
 	employee_detail.visible = false
 	loading_screen.visible = false
 	
+	# Show or hide main status bar based on the screen
+	if screen_name == "landing":
+		# Don't show main status bar on landing page
+		main_status_bar.visible = false
+	else:
+		# Show main status bar on other screens
+		main_status_bar.visible = true
+	
 	# Show the requested screen
 	match screen_name:
 		"landing":
@@ -165,7 +172,7 @@ func _on_employee_selected(employee_id: String):
 	nav_manager.navigate_to("employee_detail")
 
 func _on_shift_selected(shift):
-	# You could display shift details in the status bar or a popup
+	# Display shift details in the status bar
 	status_label.text = "Selected shift: %s at %s (%s to %s)" % [
 		shift.classification,
 		shift.site_id,
@@ -174,7 +181,7 @@ func _on_shift_selected(shift):
 	]
 
 func _on_day_selected(date):
-	# You could use this to implement "add shift on date" functionality
+	# Show selected date in status bar
 	status_label.text = "Selected date: %04d-%02d-%02d" % [
 		date.year, date.month, date.day
 	]

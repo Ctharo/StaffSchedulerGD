@@ -11,7 +11,7 @@ var nav_manager: NavigationManager
 var selected_site_id: String = ""
 var selected_classification: String = ""
 
-# UI References
+# UI References using unique names
 @onready var navigation_bar = %NavigationBar
 @onready var calendar_grid = %CalendarGrid
 @onready var month_label = %MonthLabel

@@ -6,25 +6,16 @@ signal open_employees
 
 var schedule_manager: ScheduleManager
 
-# UI References
-@onready var app_title = $VBoxContainer/TitlePanel/VBoxContainer/Title
-@onready var app_subtitle = $VBoxContainer/TitlePanel/VBoxContainer/Subtitle
-@onready var calendar_button = $VBoxContainer/ButtonsPanel/VBoxContainer/CalendarButton
-@onready var employees_button = $VBoxContainer/ButtonsPanel/VBoxContainer/EmployeesButton
-@onready var config_button = $VBoxContainer/ButtonsPanel/VBoxContainer/ConfigButton
-@onready var reports_button = $VBoxContainer/ButtonsPanel/VBoxContainer/ReportsButton
-@onready var status_label = $VBoxContainer/StatusBar/StatusLabel
+# UI References using unique names
+@onready var app_title = %Title
+@onready var app_subtitle = %Subtitle
+@onready var calendar_button = %CalendarButton
+@onready var employees_button = %EmployeesButton
+@onready var config_button = %ConfigButton
+@onready var reports_button = %ReportsButton
+@onready var status_label = %StatusLabel
 
 func _ready():
-	# Connect signals
-	if not calendar_button.pressed.is_connected(_on_calendar_button_pressed):
-		calendar_button.connect("pressed", _on_calendar_button_pressed)
-	if not employees_button.pressed.is_connected(_on_employees_button_pressed):
-		employees_button.connect("pressed", _on_employees_button_pressed)
-	if not config_button.pressed.is_connected(_on_config_button_pressed):
-		config_button.connect("pressed", _on_config_button_pressed)
-	if not reports_button.pressed.is_connected(_on_reports_button_pressed):
-		reports_button.connect("pressed", _on_reports_button_pressed)
 	
 	# Set app info
 	var organization_name = "Default Organization"
