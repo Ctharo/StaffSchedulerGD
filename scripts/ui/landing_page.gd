@@ -13,7 +13,7 @@ var schedule_manager: ScheduleManager
 @onready var employees_button = %EmployeesButton
 @onready var config_button = %ConfigButton
 @onready var reports_button = %ReportsButton
-@onready var status_label = %StatusLabel
+var set_msg_method
 
 func _ready():
 	
@@ -25,8 +25,10 @@ func _ready():
 	app_subtitle.text = "Staff Scheduler for " + organization_name
 	
 	# Update status
+	var main = get_node("/root/Main")
+	set_msg_method = main.set_temp_message
 	var today = Time.get_datetime_dict_from_system()
-	status_label.text = "Today is " + format_date(today) + ". Ready."
+	set_msg("Today is " + format_date(today) + ". Ready.")
 
 func _on_calendar_button_pressed():
 	emit_signal("open_calendar")
@@ -39,7 +41,7 @@ func _on_config_button_pressed():
 	
 func _on_reports_button_pressed():
 	# Future implementation
-	status_label.text = "Reports feature coming soon..."
+	set_msg("Reports feature coming soon...")
 
 func format_date(date):
 	var month_names = ["January", "February", "March", "April", "May", "June", 
@@ -47,3 +49,6 @@ func format_date(date):
 	var day_names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	
 	return day_names[date.weekday] + ", " + month_names[date.month - 1] + " " + str(date.day) + ", " + str(date.year)
+
+func set_msg(msg: String, delay: float = 3.0):
+	set_msg_method.call(msg, delay)

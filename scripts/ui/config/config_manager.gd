@@ -13,13 +13,14 @@ var schedule_manager: ScheduleManager
 @onready var shift_offerings_tab = %ShiftOfferingsTab
 @onready var classifications_tab = %ClassificationsTab
 @onready var pay_periods_tab = %PayPeriodsTab
-@onready var status_label = %StatusLabel
+var set_msg_method: Callable
 
 # Initialize
 func _ready():
 	# Get reference to the schedule manager from the main scene
 	schedule_manager = get_node("/root/Main/ScheduleManager")
-	
+	var main = get_node("/root/Main")
+	set_msg_method = main.set_temp_message
 	# Initialize all tabs
 	organization_tab.init(schedule_manager)
 	sites_tab.init(schedule_manager)
@@ -34,7 +35,7 @@ func _ready():
 	connect_save_signals()
 	
 	# Display welcome message
-	status_label.text = "Configuration manager loaded successfully."
+	set_msg("Configuration manager loaded successfully.")
 
 func connect_save_signals():
 	# Connect save signals from each tab
@@ -48,10 +49,7 @@ func connect_save_signals():
 	pay_periods_tab.connect("config_saved", _on_config_saved)
 
 func _on_config_saved(section_name):
-	status_label.text = section_name + " configuration saved successfully."
-	# Auto-hide the message after 3 seconds
-	await get_tree().create_timer(3.0).timeout
-	status_label.text = ""
+	set_msg(section_name + " configuration saved successfully.")
 
 func _on_export_button_pressed():
 	# Export all configuration to a file
@@ -70,8 +68,8 @@ func _on_export_button_pressed():
 	file.store_string(json_string)
 	file.close()
 	
-	status_label.text = "Configuration exported to: " + export_path
-
+	set_msg("Configuration exported to: " + export_path)
+	
 func _on_import_button_pressed():
 	# Import configuration from a file
 	var import_path = "user://config_export.json"
@@ -95,8 +93,11 @@ func _on_import_button_pressed():
 			shift_offerings_tab.import_config_data(config_data.get("shift_offerings", {}))
 			pay_periods_tab.import_config_data(config_data.get("pay_periods", {}))
 			
-			status_label.text = "Configuration imported successfully."
+			set_msg("Configuration imported successfully.")
 		else:
-			status_label.text = "Error parsing configuration file."
+			set_msg("Error parsing configuration file.")
 	else:
-		status_label.text = "Configuration file not found: " + import_path
+		set_msg("Configuration file not found: " + import_path)
+
+func set_msg(msg: String, delay: float = 3.0):
+	set_msg_method.call(msg, delay)

@@ -130,14 +130,8 @@ func _on_screen_changed(screen_name: String, _previous_screen: String):
 	employee_list.visible = false
 	employee_detail.visible = false
 	loading_screen.visible = false
-	
-	# Show or hide main status bar based on the screen
-	if screen_name == "landing":
-		# Don't show main status bar on landing page
-		main_status_bar.visible = false
-	else:
-		# Show main status bar on other screens
-		main_status_bar.visible = true
+
+	main_status_bar.visible = true
 	
 	# Show the requested screen
 	match screen_name:
@@ -185,3 +179,10 @@ func _on_day_selected(date):
 	status_label.text = "Selected date: %04d-%02d-%02d" % [
 		date.year, date.month, date.day
 	]
+	
+func set_temp_message(msg: String, delay: float = 3.0):
+	if not status_label:
+		return
+	status_label.text = msg
+	await get_tree().create_timer(delay).timeout
+	status_label.text = ""

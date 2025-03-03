@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bhh23mvc5eusl"]
 
-[ext_resource type="Script" path="res://scripts/ui/employees/employee_detail.gd" id="1_a1yxq"]
-[ext_resource type="PackedScene" path="res://scenes/ui/common/navigation_bar.tscn" id="2_t0qne"]
+[ext_resource type="Script" uid="uid://xvhgdfy6exio" path="res://scripts/ui/employees/employee_detail.gd" id="1_a1yxq"]
+[ext_resource type="PackedScene" uid="uid://cwltwoexcf05o" path="res://scenes/ui/common/navigation_bar.tscn" id="2_t0qne"]
 
 [node name="EmployeeDetail" type="Control"]
 layout_mode = 3
