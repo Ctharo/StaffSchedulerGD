@@ -5,16 +5,16 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var tiers_list = $HSplitContainer/TiersPanel/TiersList
-@onready var add_tier_button = $HSplitContainer/TiersPanel/AddTierButton
-@onready var remove_tier_button = $HSplitContainer/TiersPanel/RemoveTierButton
-@onready var tier_name_edit = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/NameSection/NameEdit
-@onready var priority_spin = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/PrioritySection/PrioritySpin
-@onready var advance_days_spin = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AdvanceDaysSection/AdvanceDaysSpin
-@onready var auto_resolve_spin = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/AutoResolveSection/AutoResolveSpin
-@onready var conditions_container = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/ConditionsSection/ConditionsContainer
-@onready var add_condition_button = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/ConditionsSection/AddConditionButton
-@onready var save_tier_button = $HSplitContainer/TierDetailsPanel/ScrollContainer/VBoxContainer/SaveSection/SaveButton
+@onready var tiers_list = %TiersList
+@onready var add_tier_button = %AddTierButton
+@onready var remove_tier_button = %RemoveTierButton
+@onready var tier_name_edit = %NameEdit
+@onready var priority_spin = %PrioritySpin
+@onready var advance_days_spin = %AdvanceDaysSpin
+@onready var auto_resolve_spin = %AutoResolveSpin
+@onready var conditions_container = %ConditionsContainer
+@onready var add_condition_button = %AddConditionButton
+@onready var save_tier_button = %SaveButton
 
 # Currently selected tier
 var selected_tier_idx = -1

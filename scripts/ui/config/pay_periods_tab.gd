@@ -5,12 +5,12 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var pay_period_type_option = $ScrollContainer/VBoxContainer/TypeSection/TypeOption
-@onready var start_day_option = $ScrollContainer/VBoxContainer/StartDaySection/StartDayOption
-@onready var start_date_picker = $ScrollContainer/VBoxContainer/StartDateSection/StartDatePicker
-@onready var periods_list = $ScrollContainer/VBoxContainer/PeriodsSection/PeriodsList
-@onready var regenerate_button = $ScrollContainer/VBoxContainer/ButtonsSection/RegenerateButton
-@onready var save_button = $ScrollContainer/VBoxContainer/ButtonsSection/SaveButton
+@onready var pay_period_type_option = %TypeOption
+@onready var start_day_option = %StartDayOption
+@onready var start_date_picker = %StartDatePicker
+@onready var periods_list = %PeriodsList
+@onready var regenerate_button = %RegenerateButton
+@onready var save_button = %SaveButton
 
 func init(manager: ScheduleManager):
 	schedule_manager = manager
