@@ -5,21 +5,21 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var employees_list = $HSplitContainer/EmployeesPanel/EmployeesList
-@onready var add_employee_button = $HSplitContainer/EmployeesPanel/AddEmployeeButton
-@onready var remove_employee_button = $HSplitContainer/EmployeesPanel/RemoveEmployeeButton
-@onready var employee_details_container = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer
-@onready var first_name_edit = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FirstNameSection/FirstNameEdit
-@onready var last_name_edit = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/LastNameSection/LastNameEdit
-@onready var email_edit = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmailSection/EmailEdit
-@onready var phone_edit = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection/PhoneEdit
-@onready var classification_option = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection/ClassificationOption
-@onready var employment_status_option = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/EmploymentStatusSection/StatusOption
-@onready var fte_spin = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/FTESection/FTESpin
-@onready var max_hours_spin = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/MaxHoursSection/MaxHoursSpin
-@onready var site_preferences = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SitePreferencesSection/SitePreferencesContainer
-@onready var save_employee_button = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/SaveSection/SaveButton
-@onready var availability_button = $HSplitContainer/EmployeeDetailsPanel/ScrollContainer/VBoxContainer/AvailabilitySection/EditAvailabilityButton
+@onready var employees_list = %EmployeesList
+@onready var add_employee_button = %AddEmployeeButton
+@onready var remove_employee_button = %RemoveEmployeeButton
+@onready var employee_details_container = %VBoxContainer
+@onready var first_name_edit = %FirstNameEdit
+@onready var last_name_edit = %LastNameEdit
+@onready var email_edit = %EmailEdit
+@onready var phone_edit = %PhoneEdit
+@onready var classification_option = %ClassificationOption
+@onready var employment_status_option = %StatusOption
+@onready var fte_spin = %FTESpin
+@onready var max_hours_spin = %MaxHoursSpin
+@onready var site_preferences = %SitePreferencesContainer
+@onready var save_employee_button = %SaveButton
+@onready var availability_button = %EditAvailabilityButton
 
 # Currently selected employee
 var selected_employee: Employee

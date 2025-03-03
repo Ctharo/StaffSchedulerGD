@@ -5,9 +5,9 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var org_name_edit = $ScrollContainer/VBoxContainer/NameSection/NameEdit
-@onready var industry_type_option = $ScrollContainer/VBoxContainer/IndustrySection/IndustryOption
-@onready var save_button = $ScrollContainer/VBoxContainer/SaveSection/SaveButton
+@onready var org_name_edit = %NameEdit
+@onready var industry_type_option = %IndustryOption
+@onready var save_button = %SaveButton
 
 func init(manager: ScheduleManager):
 	schedule_manager = manager
@@ -29,9 +29,17 @@ func load_current_config():
 		industry_type_option.add_item(industry.capitalize())
 	
 	# Set current selection
-	var industry_index = industry_type_option.get_item_index(organization.industry_type.capitalize())
-	if industry_index >= 0:
-		industry_type_option.select(industry_index)
+	var capitalized_industry = organization.industry_type.capitalize()
+	var found_index = -1
+	
+	# Find the index of the item with matching text
+	for i in range(industry_type_option.get_item_count()):
+		if industry_type_option.get_item_text(i) == capitalized_industry:
+			found_index = i
+			break
+	
+	if found_index >= 0:
+		industry_type_option.select(found_index)
 	else:
 		industry_type_option.select(0)  # Default to first option
 

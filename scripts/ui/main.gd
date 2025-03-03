@@ -4,19 +4,19 @@ var schedule_manager: ScheduleManager
 var nav_manager: NavigationManager
 
 # UI References
-@onready var content_container = $ContentContainer
-@onready var loading_screen = $ContentContainer/LoadingScreen
-@onready var landing_page = $ContentContainer/LandingPage
-@onready var calendar_view = $ContentContainer/CalendarView
-@onready var config_manager = $ContentContainer/ConfigManager
-@onready var employee_list = $ContentContainer/EmployeeList
-@onready var employee_detail = $ContentContainer/EmployeeDetail
-@onready var status_label = $StatusBar/StatusLabel
+@onready var content_container = %ContentContainer
+@onready var loading_screen = %LoadingScreen
+@onready var landing_page = %LandingPage
+@onready var calendar_view = %CalendarView
+@onready var config_manager = %ConfigManager
+@onready var employee_list = %EmployeeList
+@onready var employee_detail = %EmployeeDetail
+@onready var status_label = %StatusLabel
 
 func _ready():
 	# Get references to managers
-	schedule_manager = $ScheduleManager
-	nav_manager = $NavigationManager
+	schedule_manager = %ScheduleManager
+	nav_manager = %NavigationManager
 	
 	# Hide all screens except loading screen
 	loading_screen.visible = true

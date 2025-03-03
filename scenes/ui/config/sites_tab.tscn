@@ -30,6 +30,7 @@ text = "Sites"
 horizontal_alignment = 1
 
 [node name="SitesList" type="ItemList" parent="HSplitContainer/SitesPanel"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 allow_reselect = true
@@ -42,10 +43,12 @@ size_flags_vertical = 8
 alignment = 1
 
 [node name="AddSiteButton" type="Button" parent="HSplitContainer/SitesPanel/ButtonsContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Add Site"
 
 [node name="RemoveSiteButton" type="Button" parent="HSplitContainer/SitesPanel/ButtonsContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Remove Site"
 
@@ -79,6 +82,7 @@ layout_mode = 2
 text = "Site ID"
 
 [node name="IDEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 placeholder_text = "Site ID (e.g. MAIN)"
@@ -94,6 +98,7 @@ layout_mode = 2
 text = "Site Name"
 
 [node name="NameEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -110,6 +115,7 @@ layout_mode = 2
 text = "Address"
 
 [node name="AddressEdit" type="TextEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -126,6 +132,7 @@ layout_mode = 2
 text = "Phone"
 
 [node name="PhoneEdit" type="LineEdit" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -136,6 +143,7 @@ layout_mode = 2
 size_flags_vertical = 10
 
 [node name="SaveButton" type="Button" parent="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/SaveSection"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0

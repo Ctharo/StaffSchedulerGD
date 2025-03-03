@@ -5,14 +5,14 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var sites_list = $HSplitContainer/SitesPanel/SitesList
-@onready var site_id_edit = $HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/IDSection/IDEdit
-@onready var site_name_edit = $HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/NameSection/NameEdit
-@onready var site_address_edit = $HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/AddressSection/AddressEdit
-@onready var site_phone_edit = $HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/PhoneSection/PhoneEdit
-@onready var add_site_button = $HSplitContainer/SitesPanel/AddSiteButton
-@onready var remove_site_button = $HSplitContainer/SitesPanel/RemoveSiteButton
-@onready var save_site_button = $HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/SaveSection/SaveButton
+@onready var sites_list = %SitesList
+@onready var site_id_edit = %IDEdit
+@onready var site_name_edit = %NameEdit
+@onready var site_address_edit = %AddressEdit
+@onready var site_phone_edit = %PhoneEdit
+@onready var add_site_button = %AddSiteButton
+@onready var remove_site_button = %RemoveSiteButton
+@onready var save_site_button = %SaveButton
 
 # Currently selected site
 var selected_site: Site
