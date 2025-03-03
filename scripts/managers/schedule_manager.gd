@@ -1,5 +1,9 @@
 class_name ScheduleManager extends Node
 
+signal organization_loaded
+signal schedule_loaded
+signal configuration_error
+
 var current_schedule: Schedule
 var file_path: String = "user://schedule_data.tres"
 var current_organization: Organization
@@ -34,8 +38,8 @@ func save_organization() -> void:
 
 func initialize_basic_data() -> void:
 	# Create sites
-	var rhh = Site.new("RHH", "Rotary Hospice House")
-	var hh = Site.new("HH", "Home Hospice")
+	var rhh: Site = Site.new("RHH", "Rotary Hospice House")
+	var hh: Site = Site.new("HH", "Home Hospice")
 	current_schedule.add_site(rhh)
 	current_schedule.add_site(hh)
 	
@@ -325,6 +329,7 @@ func assign_employee_to_shift(shift_id: String, employee_id: String, is_coverage
 		save_schedule()
 	return result
 
+@warning_ignore("unused_parameter")
 func check_rule_applies(rule: Dictionary, employee_id: String, shift: Shift) -> bool:
 	# Helper to check if a specific OT rule applies
 	# Implementation would check the various conditions based on rule type
@@ -457,7 +462,7 @@ func process_shift_offer_response(offer_id: String, employee_id: String, respons
 
 func check_auto_resolve_shift_offers() -> void:
 	# This would be called periodically to auto-resolve expiring offers
-	var now = Time.get_datetime_dict_from_system()
+	var _now = Time.get_datetime_dict_from_system()
 	
 	for offer_id in current_schedule.shift_offers:
 		var offer = current_schedule.shift_offers[offer_id]
@@ -534,10 +539,12 @@ func split_shift_and_offer(shift_id: String) -> Array:
 	if end_minutes < start_minutes:  # Overnight shift
 		end_minutes += 24 * 60
 	
+	@warning_ignore("integer_division")
 	var middle_minutes = start_minutes + (end_minutes - start_minutes) / 2
 	if middle_minutes >= 24 * 60:
 		middle_minutes -= 24 * 60
 	
+	@warning_ignore("integer_division")
 	var middle_time = "%02d:%02d" % [middle_minutes / 60, middle_minutes % 60]
 	
 	# Create first half shift

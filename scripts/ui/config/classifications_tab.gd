@@ -5,11 +5,11 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var classifications_list = $ClassificationsPanel/ClassificationsList
-@onready var add_classification_button = $ClassificationsPanel/AddClassificationButton
-@onready var remove_classification_button = $ClassificationsPanel/RemoveClassificationButton
-@onready var classification_edit = $ClassificationDetailsPanel/ClassificationEdit
-@onready var save_classification_button = $ClassificationDetailsPanel/SaveButton
+@onready var classifications_list = %ClassificationsList
+@onready var add_classification_button = %AddClassificationButton
+@onready var remove_classification_button = %RemoveClassificationButton
+@onready var classification_edit = %ClassificationEdit
+@onready var save_classification_button = %SaveButton
 
 # Currently selected classification
 var selected_classification_idx = -1

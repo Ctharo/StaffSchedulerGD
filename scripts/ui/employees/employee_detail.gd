@@ -357,7 +357,7 @@ func _on_availability_toggled(is_checked: bool, day: int):
 			employee.availability[day] = []
 			_mark_as_dirty()
 
-func _on_edit_hours_pressed(day: int):
+func _on_edit_hours_pressed(_day: int):
 	# In a real app, this would open a more detailed availability editor
 	# For now, just show a simple dialog
 	var dialog = AcceptDialog.new()

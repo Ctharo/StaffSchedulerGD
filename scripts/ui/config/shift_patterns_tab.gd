@@ -217,7 +217,7 @@ func _on_pattern_length_changed(value):
 	
 	# Add day editors
 	for day in range(value):
-		var editor = load("res://pattern_date_editor.tscn").instantiate()
+		var editor = load("res://scenes/ui/config/pattern_date_editor.tscn").instantiate()
 		editor.day_number = day
 		editor.day_name = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][day % 7]
 		pattern_grid.add_child(editor)

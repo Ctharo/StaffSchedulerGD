@@ -48,15 +48,16 @@ func add_pattern_shift(day_offset: int, shift_name: String, start_time: String, 
 func assign_to_employee(employee_id: String) -> void:
 	assigned_employee_id = employee_id
 
-func get_shifts_for_date_range(start_date: Dictionary, end_date: Dictionary) -> Array:
+func get_shifts_for_date_range(p_start_date: Dictionary, end_date: Dictionary) -> Array:
 	var shifts = []
 	
 	if pattern_length <= 0 or assigned_employee_id.is_empty():
 		return shifts
 	
-	var current_date = start_date.duplicate()
+	var current_date = p_start_date.duplicate()
 	
 	while TimeUtility.compare_dates(current_date, end_date) <= 0:
+		# FIXME: Are we accessing the correct start_date?
 		var days_since_start = TimeUtility.days_between(self.start_date, current_date)
 		var pattern_day = days_since_start % pattern_length
 		

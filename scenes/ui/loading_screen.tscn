@@ -54,6 +54,7 @@ text = "StaffScheduler"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 40)
 layout_mode = 2
 max_value = 4.0
@@ -61,12 +62,14 @@ step = 1.0
 show_percentage = false
 
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Loading configuration..."
 horizontal_alignment = 1
 
 [node name="ErrorContainer" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
@@ -80,12 +83,14 @@ text = "The following issues were detected:"
 horizontal_alignment = 1
 
 [node name="ErrorList" type="ItemList" parent="VBoxContainer/ErrorContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
 auto_height = true
 
 [node name="ActionsContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -97,6 +102,7 @@ theme_override_font_sizes/font_size = 16
 text = "Setup Actions:"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -104,6 +110,7 @@ theme_override_font_sizes/font_size = 18
 text = "Continue (5)"
 
 [node name="ProgressArc" type="ProgressBar" parent="VBoxContainer/ContinueButton"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

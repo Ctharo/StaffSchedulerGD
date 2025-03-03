@@ -4,7 +4,7 @@ var schedule_manager: ScheduleManager
 var nav_manager: NavigationManager
 
 # UI References
-@onready var content_container = %ContentContainer
+@onready var content_container: = %ContentContainer
 @onready var loading_screen = %LoadingScreen
 @onready var landing_page = %LandingPage
 @onready var calendar_view = %CalendarView
@@ -30,12 +30,12 @@ func _ready():
 	loading_screen.connect("loading_complete", _on_loading_complete)
 	
 	# Connect ScheduleManager signals
-	schedule_manager.connect("organization_loaded", _on_organization_loaded)
-	schedule_manager.connect("schedule_loaded", _on_schedule_loaded)
-	schedule_manager.connect("configuration_error", _on_configuration_error)
+	schedule_manager.organization_loaded.connect(_on_organization_loaded)
+	schedule_manager.schedule_loaded.connect(_on_schedule_loaded)
+	schedule_manager.configuration_error.connect(_on_configuration_error)
 	
 	# Connect NavigationManager signals
-	nav_manager.connect("screen_changed", _on_screen_changed)
+	nav_manager.screen_changed.connect(_on_screen_changed)
 	
 	# Start the loading process
 	_start_loading_process()
@@ -73,12 +73,12 @@ func _initialize_views():
 	employee_list.initialize(schedule_manager, nav_manager)
 	
 	# Connect navigation signals
-	landing_page.connect("open_calendar", _on_open_calendar)
-	landing_page.connect("open_employees", _on_open_employees)
-	landing_page.connect("open_configuration", _on_open_configuration)
+	landing_page.open_calendar.connect(_on_open_calendar)
+	landing_page.open_employees.connect(_on_open_employees)
+	landing_page.open_configuration.connect(_on_open_configuration)
 	
 	# Connect employee signals
-	employee_list.connect("employee_selected", _on_employee_selected)
+	employee_list.employee_selected.connect(_on_employee_selected)
 	
 	# Final loading step
 	loading_screen.update_progress("User interface initialized...")

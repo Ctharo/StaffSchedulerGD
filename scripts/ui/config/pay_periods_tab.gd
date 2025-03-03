@@ -126,7 +126,7 @@ func _on_period_type_changed(idx):
 	# Disable start day for semimonthly and monthly
 	start_day_option.disabled = period_type == "semimonthly" or period_type == "monthly"
 
-func _on_start_day_changed(idx):
+func _on_start_day_changed(_idx):
 	# Nothing to do here, just record in save
 	pass
 

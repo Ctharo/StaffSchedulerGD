@@ -118,7 +118,7 @@ func _update_employee_list():
 		employee_list.add_item(display_text)
 		employee_list.set_item_metadata(employee_list.get_item_count() - 1, employee.id)
 
-func _on_search_text_changed(new_text):
+func _on_search_text_changed(_new_text):
 	apply_filters()
 
 func _on_filter_changed(_idx):

@@ -55,9 +55,9 @@ func get_start_time() -> String:
 func get_end_time() -> String:
 	return end_time_edit.text
 
-func set_shift_name(p_name: String) -> void:
+func set_shift_name(name: String) -> void:
 	for i in range(shift_option.get_item_count()):
-		if shift_option.get_item_text(i) == p_name:
+		if shift_option.get_item_text(i) == name:
 			shift_option.select(i)
 			_on_shift_type_changed(i)
 			break

@@ -8,7 +8,7 @@ var schedule_manager: ScheduleManager
 @onready var employees_list = %EmployeesList
 @onready var add_employee_button = %AddEmployeeButton
 @onready var remove_employee_button = %RemoveEmployeeButton
-@onready var employee_details_container = %VBoxContainer
+@onready var employee_details_container = %EmployeeDetailsContainer
 @onready var first_name_edit = %FirstNameEdit
 @onready var last_name_edit = %LastNameEdit
 @onready var email_edit = %EmailEdit
@@ -256,7 +256,7 @@ func get_config_data():
 	
 	return employees_data
 
-func import_config_data(data):
+func import_config_data(_data):
 	# Import employee data
 	# In a real implementation, you'd want to handle duplicate detection
 	pass

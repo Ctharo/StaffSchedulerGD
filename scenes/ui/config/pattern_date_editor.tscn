@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://cubf8ww10gpbp"]
+
+[ext_resource type="Script" uid="uid://djp2teq84eulf" path="res://scripts/ui/config/pattern_day_tab.gd" id="1_e700x"]
+
+[node name="PatternDayEditor" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -752.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e700x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DayLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Day 1 (Sunday)"
+
+[node name="ShiftOption" type="OptionButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 4
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Day"
+popup/item_1/id = 1
+popup/item_2/text = "Evening"
+popup/item_2/id = 2
+popup/item_3/text = "Night"
+popup/item_3/id = 3
+
+[node name="TimeContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartLabel" type="Label" parent="VBoxContainer/TimeContainer"]
+layout_mode = 2
+text = "Start Time:"
+
+[node name="StartTimeEdit" type="LineEdit" parent="VBoxContainer/TimeContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+placeholder_text = "07:00"
+
+[node name="EndLabel" type="Label" parent="VBoxContainer/TimeContainer"]
+layout_mode = 2
+text = "End Time:"
+
+[node name="EndTimeEdit" type="LineEdit" parent="VBoxContainer/TimeContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+placeholder_text = "19:00"

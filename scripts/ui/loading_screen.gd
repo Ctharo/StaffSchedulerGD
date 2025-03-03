@@ -5,13 +5,13 @@ signal setup_organization
 signal setup_sites
 signal setup_employees
 
-@onready var progress_bar = $VBoxContainer/ProgressBar
-@onready var status_label = $VBoxContainer/StatusLabel
-@onready var error_container = $VBoxContainer/ErrorContainer
-@onready var error_list = $VBoxContainer/ErrorContainer/ErrorList
-@onready var continue_button = $VBoxContainer/ContinueButton
-@onready var button_progress = $VBoxContainer/ContinueButton/ProgressArc
-@onready var actions_container = $VBoxContainer/ActionsContainer
+@onready var progress_bar = %ProgressBar
+@onready var status_label = %StatusLabel
+@onready var error_container = %ErrorContainer
+@onready var error_list = %ErrorList
+@onready var continue_button = %ContinueButton
+@onready var button_progress = %ProgressArc
+@onready var actions_container = %ActionsContainer
 
 var total_steps = 4
 var current_step = 0
@@ -35,7 +35,7 @@ func _ready():
 	actions_container.visible = false
 	
 	# Connect button signals
-	continue_button.connect("pressed", _on_continue_pressed)
+	continue_button.pressed.connect(_on_continue_pressed)
 	
 	# Initialize button progress arc
 	if button_progress:
