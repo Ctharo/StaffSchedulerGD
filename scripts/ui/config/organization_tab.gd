@@ -11,6 +11,9 @@ var schedule_manager: ScheduleManager
 
 func init(manager: ScheduleManager):
 	schedule_manager = manager
+	# Check if organization exists, create one if it doesn't
+	ensure_organization_exists()
+	
 	load_current_config()
 	
 	# Connect signals
@@ -42,6 +45,13 @@ func load_current_config():
 		industry_type_option.select(found_index)
 	else:
 		industry_type_option.select(0)  # Default to first option
+
+func ensure_organization_exists():
+	# Create default organization if none exists
+	if schedule_manager.current_organization == null:
+		schedule_manager.current_organization = Organization.new("default", "Default Organization")
+		schedule_manager.current_organization.set_industry_defaults("healthcare")
+		schedule_manager.save_organization()
 
 func _on_save_button_pressed():
 	# Save organization details

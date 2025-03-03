@@ -1,0 +1,175 @@
+[gd_scene load_steps=3 format=3 uid="uid://rxt1561pwbey"]
+
+[ext_resource type="Script" uid="uid://dgsto75s3nqor" path="res://scripts/ui/schedule/shift_assignment_dialog.gd" id="1_4i3h7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3okn7"]
+bg_color = Color(0.95, 0.97, 0.99, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.85, 0.9, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ShiftAssignmentDialog" type="Window"]
+title = "Assign Shift"
+initial_position = 2
+size = Vector2i(700, 500)
+min_size = Vector2i(650, 450)
+script = ExtResource("1_4i3h7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ShiftDetailsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Assign: RN at RHH
+Monday, March 3, 2025 from 07:00 to 19:00"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="AvailableEmployeesPanel" type="PanelContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3okn7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel/VBoxContainer"]
+layout_mode = 2
+text = "Available Employees"
+horizontal_alignment = 1
+
+[node name="FilterContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SearchLabel" type="Label" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel/VBoxContainer/FilterContainer"]
+layout_mode = 2
+text = "Search:"
+
+[node name="SearchEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel/VBoxContainer/FilterContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Filter employees..."
+clear_button_enabled = true
+
+[node name="ShowAllCheck" type="CheckBox" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel/VBoxContainer/FilterContainer"]
+layout_mode = 2
+text = "Show All"
+
+[node name="EmployeesList" type="ItemList" parent="VBoxContainer/HSplitContainer/AvailableEmployeesPanel"]
+layout_mode = 2
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 3
+item_0/text = "Smith, John"
+item_1/text = "Johnson, Mary (OT)"
+item_2/text = "Davis, Robert"
+
+[node name="EmployeeDetailsPanel" type="PanelContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3okn7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Employee Details"
+horizontal_alignment = 1
+
+[node name="DetailsContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "John Smith"
+
+[node name="ClassificationLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+text = "Classification: RN"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+text = "Status: Full Time"
+
+[node name="HoursLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+text = "Hours this week: 32/40"
+
+[node name="OvertimeLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.3, 0.3, 1)
+text = "This shift would be overtime"
+
+[node name="ConflictLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.3, 0.3, 1)
+text = "Availability conflict detected"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+
+[node name="NotesLabel" type="Label" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+layout_mode = 2
+text = "Notes:"
+
+[node name="NotesEdit" type="TextEdit" parent="VBoxContainer/HSplitContainer/EmployeeDetailsPanel/VBoxContainer/DetailsContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Add notes about this assignment..."
+wrap_mode = 1
+
+[node name="ButtonsPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="OTCheckbox" type="CheckBox" parent="VBoxContainer/ButtonsPanel"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Mark as Overtime"
+
+[node name="AssignButton" type="Button" parent="VBoxContainer/ButtonsPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Assign"
+
+[node name="OfferButton" type="Button" parent="VBoxContainer/ButtonsPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Offer Shift"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/ButtonsPanel"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Cancel"

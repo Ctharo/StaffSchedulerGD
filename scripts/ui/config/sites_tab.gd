@@ -19,6 +19,9 @@ var selected_site: Site
 
 func init(manager: ScheduleManager):
 	schedule_manager = manager
+	
+	ensure_schedule_exists()
+	
 	load_sites_list()
 	
 	# Connect signals
@@ -27,8 +30,24 @@ func init(manager: ScheduleManager):
 	save_site_button.connect("pressed", _on_save_site_button_pressed)
 	sites_list.connect("item_selected", _on_site_selected)
 
+func ensure_schedule_exists():
+	# Make sure the schedule exists
+	if schedule_manager.current_schedule == null:
+		schedule_manager.current_schedule = Schedule.new()
+		schedule_manager.save_schedule()
+	
+	# Make sure sites dictionary exists
+	if schedule_manager.current_schedule.sites == null:
+		schedule_manager.current_schedule.sites = {}
+		schedule_manager.save_schedule()
+
 func load_sites_list():
 	sites_list.clear()
+	
+	if schedule_manager.current_schedule == null or schedule_manager.current_schedule.sites == null:
+		clear_site_details()
+		remove_site_button.disabled = true
+		return
 	
 	# Add each site to the list
 	for site_id in schedule_manager.current_schedule.sites:

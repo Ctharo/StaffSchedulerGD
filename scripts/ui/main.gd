@@ -93,7 +93,7 @@ func _initialize_views():
 	landing_page.schedule_manager = schedule_manager
 	
 	# Initialize calendar view
-	calendar_view.schedule_manager = schedule_manager
+	calendar_view.initialize(schedule_manager, nav_manager)
 	
 	# Initialize config manager
 	config_manager.schedule_manager = schedule_manager
@@ -108,6 +108,10 @@ func _initialize_views():
 	
 	# Connect employee signals
 	employee_list.employee_selected.connect(_on_employee_selected)
+	
+	# Connect calendar signals
+	calendar_view.shift_selected.connect(_on_shift_selected)
+	calendar_view.day_selected.connect(_on_day_selected)
 	
 	# Final loading step
 	loading_screen.update_progress("User interface initialized...")
@@ -156,3 +160,18 @@ func _on_employee_selected(employee_id: String):
 	
 	# Navigate to employee detail
 	nav_manager.navigate_to("employee_detail")
+
+func _on_shift_selected(shift):
+	# You could display shift details in the status bar or a popup
+	status_label.text = "Selected shift: %s at %s (%s to %s)" % [
+		shift.classification,
+		shift.site_id,
+		shift.start_time,
+		shift.end_time
+	]
+
+func _on_day_selected(date):
+	# You could use this to implement "add shift on date" functionality
+	status_label.text = "Selected date: %04d-%02d-%02d" % [
+		date.year, date.month, date.day
+	]

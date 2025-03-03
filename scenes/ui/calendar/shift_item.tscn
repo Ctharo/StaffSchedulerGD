@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4p5k8w7xdtqs"]
+
+[ext_resource type="Script" path="res://scripts/ui/calendar/shift_item.gd" id="1_63ogq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4nqd"]
+bg_color = Color(0.85, 0.9, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7, 0.8, 0.9, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="ShiftItem" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 24)
+offset_right = 118.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_x4nqd")
+script = ExtResource("1_63ogq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ClassificationLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "RN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "7:00-19:00"
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 10
+text = "Smith, J."
+text_overrun_behavior = 3
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 10
+text = "OT"
+horizontal_alignment = 1
+vertical_alignment = 1
