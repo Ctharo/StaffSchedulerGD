@@ -31,7 +31,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Organization Name"
 
-[node name="NameEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/NameSection"]
+[node name="NameEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
@@ -49,13 +49,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Industry Type"
 
-[node name="HelpText" type="Label" parent="ScrollContainer/VBoxContainer/IndustrySection/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-text = "Selecting an industry will load default settings for classifications, overtime rules, and more."
-autowrap_mode = 3
-
-[node name="IndustryOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/IndustrySection"]
+[node name="IndustryOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/IndustrySection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -72,6 +66,13 @@ popup/item_3/id = 3
 popup/item_4/text = "Other"
 popup/item_4/id = 4
 
+[node name="HelpText" type="Label" parent="ScrollContainer/VBoxContainer/IndustrySection/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+text = "Selecting an industry will load default settings for classifications, overtime rules, and more."
+autowrap_mode = 3
+
 [node name="SaveSection" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
@@ -86,6 +87,7 @@ layout_mode = 2
 text = "Save Changes"
 
 [node name="InformationLabel" type="Label" parent="ScrollContainer/VBoxContainer/SaveSection/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)

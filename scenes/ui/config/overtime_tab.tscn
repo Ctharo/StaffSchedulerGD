@@ -93,7 +93,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Rule Name"
 
-[node name="NameEdit" type="LineEdit" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+[node name="NameEdit" type="LineEdit" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -110,7 +110,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Rule Type"
 
-[node name="TypeOption" type="OptionButton" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/TypeSection"]
+[node name="TypeOption" type="OptionButton" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/TypeSection/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -136,7 +136,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Hours per Day:"
 
-[node name="ThresholdSpin" type="SpinBox" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/ThresholdSection"]
+[node name="ThresholdSpin" type="SpinBox" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/ThresholdSection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -154,7 +154,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Pay Multiplier"
 
-[node name="MultiplierSpin" type="SpinBox" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/MultiplierSection"]
+[node name="MultiplierSpin" type="SpinBox" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/MultiplierSection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -174,7 +174,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Rule Description"
 
-[node name="InfoLabel" type="RichTextLabel" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/InfoSection"]
+[node name="InfoLabel" type="RichTextLabel" parent="HSplitContainer/RuleDetailsPanel/ScrollContainer/VBoxContainer/InfoSection/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true

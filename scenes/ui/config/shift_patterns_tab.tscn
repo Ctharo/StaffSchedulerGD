@@ -30,6 +30,7 @@ text = "Shift Patterns"
 horizontal_alignment = 1
 
 [node name="InfoLabel" type="Label" parent="HSplitContainer/PatternsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
 text = "Patterns define recurring shift schedules"
@@ -92,7 +93,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Pattern Name"
 
-[node name="NameEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/NameSection"]
+[node name="NameEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/NameSection/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -109,7 +110,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Site"
 
-[node name="SiteOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SiteSection"]
+[node name="SiteOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SiteSection/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -131,7 +132,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Classification"
 
-[node name="ClassificationOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection"]
+[node name="ClassificationOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
@@ -155,7 +156,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Pattern Length (days)"
 
-[node name="LengthSpin" type="SpinBox" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/LengthSection"]
+[node name="LengthSpin" type="SpinBox" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/LengthSection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -175,21 +176,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Pattern Schedule"
 
-[node name="PatternGrid" type="GridContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection"]
+[node name="PatternGrid" type="GridContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Day1Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+[node name="Day1Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid"]
 layout_mode = 2
 text = "Day 1 (Sunday):"
 
-[node name="Day1Container" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+[node name="Day1Container" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid"]
 layout_mode = 2
 
-[node name="ShiftOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container"]
+[node name="ShiftOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day1Container"]
 layout_mode = 2
 selected = 0
 item_count = 4
@@ -202,32 +203,32 @@ popup/item_2/id = 2
 popup/item_3/text = "Night"
 popup/item_3/id = 3
 
-[node name="TimesContainer" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container"]
+[node name="TimesContainer" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day1Container"]
 visible = false
 layout_mode = 2
 
-[node name="StartTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container/TimesContainer"]
+[node name="StartTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day1Container/TimesContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 placeholder_text = "07:00"
 
-[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container/TimesContainer"]
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day1Container/TimesContainer"]
 layout_mode = 2
 text = "to"
 
-[node name="EndTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day1Container/TimesContainer"]
+[node name="EndTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day1Container/TimesContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 placeholder_text = "19:00"
 
-[node name="Day2Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+[node name="Day2Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid"]
 layout_mode = 2
 text = "Day 2 (Monday):"
 
-[node name="Day2Container" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid"]
+[node name="Day2Container" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid"]
 layout_mode = 2
 
-[node name="ShiftOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container"]
+[node name="ShiftOption" type="OptionButton" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day2Container"]
 layout_mode = 2
 selected = 1
 item_count = 4
@@ -240,20 +241,20 @@ popup/item_2/id = 2
 popup/item_3/text = "Night"
 popup/item_3/id = 3
 
-[node name="TimesContainer" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container"]
+[node name="TimesContainer" type="HBoxContainer" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day2Container"]
 layout_mode = 2
 
-[node name="StartTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container/TimesContainer"]
+[node name="StartTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day2Container/TimesContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "07:00"
 placeholder_text = "07:00"
 
-[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container/TimesContainer"]
+[node name="Label" type="Label" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day2Container/TimesContainer"]
 layout_mode = 2
 text = "to"
 
-[node name="EndTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid/Day2Container/TimesContainer"]
+[node name="EndTimeEdit" type="LineEdit" parent="HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/VBoxContainer/PatternGrid/Day2Container/TimesContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "19:00"
