@@ -5,15 +5,15 @@ signal config_saved(section_name)
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var patterns_list = $HSplitContainer/PatternsPanel/PatternsList
-@onready var add_pattern_button = $HSplitContainer/PatternsPanel/AddPatternButton
-@onready var remove_pattern_button = $HSplitContainer/PatternsPanel/RemovePatternButton
-@onready var pattern_name_edit = $HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/NameSection/NameEdit
-@onready var site_option = $HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SiteSection/SiteOption
-@onready var classification_option = $HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/ClassificationSection/ClassificationOption
-@onready var pattern_length_spin = $HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/LengthSection/LengthSpin
-@onready var pattern_grid = $HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/PatternSection/PatternGrid
-@onready var save_pattern_button = $HSplitContainer/PatternDetailsPanel/ScrollContainer/VBoxContainer/SaveSection/SaveButton
+@onready var patterns_list = %PatternsList
+@onready var add_pattern_button = %AddPatternButton
+@onready var remove_pattern_button = %RemovePatternButton
+@onready var pattern_name_edit = %NameEdit
+@onready var site_option = %SiteOption
+@onready var classification_option = %ClassificationOption
+@onready var pattern_length_spin = %LengthSpin
+@onready var pattern_grid = %PatternGrid
+@onready var save_pattern_button = %SaveButton
 
 # Currently selected pattern
 var selected_line: ShiftLine
