@@ -19,16 +19,7 @@ var filtered_employees = []
 func _ready():
 	# Set up navigation bar
 	navigation_bar.set_screen_title("Employee Manager")
-	navigation_bar.connect("back_pressed", _on_back_button_pressed)
-	navigation_bar.connect("home_pressed", _on_home_button_pressed)
 	
-	# Connect signals
-	search_bar.connect("text_changed", _on_search_text_changed)
-	classification_filter.connect("item_selected", _on_filter_changed)
-	sort_option.connect("item_selected", _on_sort_option_changed)
-	employee_list.connect("item_activated", _on_employee_list_item_activated)
-	add_button.connect("pressed", _on_add_button_pressed)
-
 func initialize(p_schedule_manager: ScheduleManager, p_nav_manager: NavigationManager):
 	schedule_manager = p_schedule_manager
 	nav_manager = p_nav_manager
@@ -136,8 +127,8 @@ func _on_add_button_pressed():
 	var new_employee = schedule_manager.create_employee("New", "Employee", "")
 	emit_signal("employee_selected", new_employee.id)
 
-func _on_back_button_pressed():
+func _on_navigation_bar_back_pressed() -> void:
 	nav_manager.go_back()
 
-func _on_home_button_pressed():
-	nav_manager.navigate_to("landing")
+func _on_navigation_bar_home_pressed() -> void:
+	nav_manager.go_home()

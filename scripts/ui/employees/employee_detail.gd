@@ -18,13 +18,6 @@ var editing_cell: Control = null
 var editable_fields = {}
 
 func _ready():
-	# Set up navigation bar
-	navigation_bar.connect("back_pressed", _on_back_button_pressed)
-	navigation_bar.connect("home_pressed", _on_home_button_pressed)
-	
-	# Connect buttons
-	save_button.connect("pressed", _on_save_button_pressed)
-	cancel_button.connect("pressed", _on_cancel_button_pressed)
 	
 	# Disable save/cancel buttons initially
 	save_button.disabled = true
@@ -432,7 +425,7 @@ func _on_cancel_button_pressed():
 	# Reload employee data, discarding changes
 	load_employee_data()
 
-func _on_back_button_pressed():
+func _on_navigation_bar_back_pressed() -> void:
 	# Check for unsaved changes
 	if is_dirty:
 		nav_manager.show_unsaved_changes_dialog(func(should_save: bool):
@@ -443,13 +436,14 @@ func _on_back_button_pressed():
 	else:
 		nav_manager.go_back()
 
-func _on_home_button_pressed():
+
+func _on_navigation_bar_home_pressed() -> void:
 	# Check for unsaved changes
 	if is_dirty:
 		nav_manager.show_unsaved_changes_dialog(func(should_save: bool):
 			if should_save:
 				_on_save_button_pressed()
-			nav_manager.navigate_to("landing")
+			nav_manager.go_home()
 		)
 	else:
-		nav_manager.navigate_to("landing")
+		nav_manager.go_home()

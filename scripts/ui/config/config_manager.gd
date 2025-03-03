@@ -1,9 +1,14 @@
 extends Control
 
+signal send_message(msg: String, timeout: float)
+
+
 # Reference to the schedule manager
 var schedule_manager: ScheduleManager
+var nav_manager: NavigationManager
 
 # UI References
+@onready var navigation_bar = %NavigationBar
 @onready var tab_container = %TabContainer
 @onready var organization_tab = %OrganizationTab
 @onready var sites_tab = %SitesTab
@@ -19,8 +24,16 @@ var set_msg_method: Callable
 func _ready():
 	# Get reference to the schedule manager from the main scene
 	schedule_manager = get_node("/root/Main/ScheduleManager")
-	var main = get_node("/root/Main")
-	set_msg_method = main.set_temp_message
+
+
+
+func initialize(p_schedule_manager: ScheduleManager, p_nav_manager: NavigationManager):
+	
+	schedule_manager = p_schedule_manager
+	nav_manager = p_nav_manager
+	
+	navigation_bar.initialize(nav_manager)
+	
 	# Initialize all tabs
 	organization_tab.init(schedule_manager)
 	sites_tab.init(schedule_manager)
@@ -36,7 +49,7 @@ func _ready():
 	
 	# Display welcome message
 	set_msg("Configuration manager loaded successfully.")
-
+	
 func connect_save_signals():
 	# Connect save signals from each tab
 	organization_tab.connect("config_saved", _on_config_saved)
@@ -100,4 +113,11 @@ func _on_import_button_pressed():
 		set_msg("Configuration file not found: " + import_path)
 
 func set_msg(msg: String, delay: float = 3.0):
-	set_msg_method.call(msg, delay)
+	send_message.emit(msg, delay)
+
+
+func _on_navigation_bar_home_pressed() -> void:
+	nav_manager.go_home()
+
+func _on_navigation_bar_back_pressed() -> void:
+	nav_manager.go_back()

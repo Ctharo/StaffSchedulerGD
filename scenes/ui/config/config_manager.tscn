@@ -97,5 +97,7 @@ text = "Export Configuration"
 layout_mode = 2
 text = "Import Configuration"
 
+[connection signal="back_pressed" from="VBoxContainer/NavigationBar" to="." method="_on_navigation_bar_back_pressed"]
+[connection signal="home_pressed" from="VBoxContainer/NavigationBar" to="." method="_on_navigation_bar_home_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ExportButton" to="." method="_on_export_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ImportButton" to="." method="_on_import_button_pressed"]

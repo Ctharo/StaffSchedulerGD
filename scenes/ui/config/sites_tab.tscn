@@ -150,3 +150,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 disabled = true
 text = "Save Site"
+
+[connection signal="item_selected" from="HSplitContainer/SitesPanel/SitesList" to="." method="_on_site_selected"]
+[connection signal="pressed" from="HSplitContainer/SitesPanel/ButtonsContainer/AddSiteButton" to="." method="_on_add_site_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/SitesPanel/ButtonsContainer/RemoveSiteButton" to="." method="_on_remove_site_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/SiteDetailsPanel/ScrollContainer/VBoxContainer/SaveSection/SaveButton" to="." method="_on_save_site_button_pressed"]

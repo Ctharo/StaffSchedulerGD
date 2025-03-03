@@ -87,3 +87,5 @@ grow_vertical = 0
 [node name="StatusLabel" type="Label" parent="StatusBar"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[connection signal="send_message" from="ContentContainer/ConfigManager" to="." method="set_temp_message"]

@@ -1,5 +1,6 @@
 extends Control
 
+signal send_message(msg: String, timeout: float)
 signal open_calendar
 signal open_configuration
 signal open_employees
@@ -13,7 +14,6 @@ var schedule_manager: ScheduleManager
 @onready var employees_button = %EmployeesButton
 @onready var config_button = %ConfigButton
 @onready var reports_button = %ReportsButton
-var set_msg_method
 
 func _ready():
 	
@@ -25,8 +25,6 @@ func _ready():
 	app_subtitle.text = "Staff Scheduler for " + organization_name
 	
 	# Update status
-	var main = get_node("/root/Main")
-	set_msg_method = main.set_temp_message
 	var today = Time.get_datetime_dict_from_system()
 	set_msg("Today is " + format_date(today) + ". Ready.")
 
@@ -51,4 +49,4 @@ func format_date(date):
 	return day_names[date.weekday] + ", " + month_names[date.month - 1] + " " + str(date.day) + ", " + str(date.year)
 
 func set_msg(msg: String, delay: float = 3.0):
-	set_msg_method.call(msg, delay)
+	send_message.emit(msg, delay)

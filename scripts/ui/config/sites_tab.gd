@@ -24,12 +24,6 @@ func init(manager: ScheduleManager):
 	
 	load_sites_list()
 	
-	# Connect signals
-	add_site_button.connect("pressed", _on_add_site_button_pressed)
-	remove_site_button.connect("pressed", _on_remove_site_button_pressed)
-	save_site_button.connect("pressed", _on_save_site_button_pressed)
-	sites_list.connect("item_selected", _on_site_selected)
-
 func ensure_schedule_exists():
 	# Make sure the schedule exists
 	if schedule_manager.current_schedule == null:

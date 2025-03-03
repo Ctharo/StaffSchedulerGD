@@ -17,7 +17,6 @@ func init(manager: ScheduleManager):
 	load_current_config()
 	
 	# Connect signals
-	save_button.connect("pressed", _on_save_button_pressed)
 	industry_type_option.connect("item_selected", _on_industry_type_selected)
 
 func load_current_config():

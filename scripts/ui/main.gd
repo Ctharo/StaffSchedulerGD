@@ -1,5 +1,6 @@
 extends Control
 
+
 var schedule_manager: ScheduleManager
 var nav_manager: NavigationManager
 
@@ -98,7 +99,7 @@ func _initialize_views():
 	calendar_view.initialize(schedule_manager, nav_manager)
 	
 	# Initialize config manager
-	config_manager.schedule_manager = schedule_manager
+	config_manager.initialize(schedule_manager, nav_manager)
 	
 	# Initialize employee views
 	employee_list.initialize(schedule_manager, nav_manager)
@@ -176,9 +177,9 @@ func _on_shift_selected(shift):
 
 func _on_day_selected(date):
 	# Show selected date in status bar
-	status_label.text = "Selected date: %04d-%02d-%02d" % [
+	set_temp_message("Selected date: %04d-%02d-%02d" % [
 		date.year, date.month, date.day
-	]
+	])
 	
 func set_temp_message(msg: String, delay: float = 3.0):
 	if not status_label:
@@ -186,3 +187,11 @@ func set_temp_message(msg: String, delay: float = 3.0):
 	status_label.text = msg
 	await get_tree().create_timer(delay).timeout
 	status_label.text = ""
+
+
+func _on_home_pressed() -> void:
+	nav_manager.navigate_to("landing")
+
+
+func _on_back_pressed() -> void:
+	nav_manager.go_back()

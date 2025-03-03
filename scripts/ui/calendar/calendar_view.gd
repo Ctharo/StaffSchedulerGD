@@ -1,5 +1,6 @@
 extends Control
 
+signal send_message(msg: String, duration: float)
 signal shift_selected(shift)
 signal day_selected(date)
 
@@ -26,10 +27,7 @@ var selected_classification: String = ""
 func _ready():
 	# Initialize date
 	current_date = Time.get_datetime_dict_from_system()
-	
-	# Connect signals
-	connect_signals()
-	
+		
 	# Set up keyboard shortcuts
 	set_process_input(true)
 
@@ -83,13 +81,7 @@ func initialize(p_schedule_manager: ScheduleManager, p_nav_manager: NavigationMa
 	# Complete initialization
 	post_initialize()
 
-func connect_signals():
-	prev_button.connect("pressed", _on_prev_button_pressed)
-	next_button.connect("pressed", _on_next_button_pressed)
-	today_button.connect("pressed", _on_today_button_pressed)
-	view_mode_option.connect("item_selected", _on_view_mode_changed)
-	site_filter.connect("item_selected", _on_site_filter_changed)
-	classification_filter.connect("item_selected", _on_classification_filter_changed)
+
 
 func setup_filters():
 	# Set up site filter
@@ -314,11 +306,11 @@ func update_status_message():
 			shift_count += day_cell.get_shift_count()
 			assigned_count += day_cell.get_assigned_shift_count()
 	
-	status_label.text = "Loaded %d shifts (%d assigned, %d open)" % [
+	set_msg("Loaded %d shifts (%d assigned, %d open)" % [
 		shift_count, 
 		assigned_count, 
 		shift_count - assigned_count
-	]
+	])
 
 # Event handlers
 func _on_prev_button_pressed():
@@ -419,9 +411,9 @@ func _on_shift_assignment_completed(shift_id, employee_id):
 		if schedule_manager.current_schedule.employees.has(employee_id):
 			employee_name = schedule_manager.current_schedule.employees[employee_id].get_full_name()
 		
-		status_label.text = "Shift assigned to %s" % employee_name
+		set_msg("Shift assigned to %s" % employee_name)
 	else:
-		status_label.text = "Shift offering created"
+		set_msg("Shift offering created")
 
 func show_add_shift_menu(date):
 	# Create popup menu for adding a new shift
@@ -467,9 +459,19 @@ func _on_add_shift_menu_selected(id, date):
 		update_calendar()
 		
 		# Show status message
-		status_label.text = "Created new %s shift on %04d-%02d-%02d" % [
+		set_msg("Created new %s shift on %04d-%02d-%02d" % [
 			classification, date.year, date.month, date.day
-		]
+		])
 	else:
 		# This would open a more complex shift creation dialog
-		status_label.text = "Multi-shift creation not implemented yet"
+		set_msg("Multi-shift creation not implemented yet")
+
+
+func _on_navigation_bar_home_pressed() -> void:
+	nav_manager.go_home()
+
+func _on_navigation_bar_back_pressed() -> void:
+	nav_manager.go_back()
+
+func set_msg(msg: String, delay: float = 3.0):
+	send_message.emit(msg, delay)

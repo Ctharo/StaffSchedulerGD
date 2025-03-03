@@ -51,6 +51,9 @@ func go_back() -> bool:
 	
 	return true
 
+func go_home():
+	navigate_to("landing")
+
 func mark_screen_dirty(screen_name: String, is_dirty: bool = true) -> void:
 	if is_dirty:
 		dirty_screens[screen_name] = true

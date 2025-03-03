@@ -102,3 +102,8 @@ size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 16
 disabled = true
 text = "Cancel"
+
+[connection signal="back_pressed" from="VBoxContainer/NavigationBar" to="." method="_on_navigation_bar_back_pressed"]
+[connection signal="home_pressed" from="VBoxContainer/NavigationBar" to="." method="_on_navigation_bar_home_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonPanel/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonPanel/CancelButton" to="." method="_on_cancel_button_pressed"]

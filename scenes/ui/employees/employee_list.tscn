@@ -115,3 +115,11 @@ theme_override_constants/margin_bottom = 5
 [node name="Label" type="Label" parent="VBoxContainer/ButtonsPanel/MarginContainer"]
 layout_mode = 2
 text = "Double-click an employee to view details"
+
+[connection signal="back_pressed" from="VBoxContainer/NavigationBar" to="." method="_on_navigation_bar_back_pressed"]
+[connection signal="home_pressed" from="VBoxContainer/NavigationBar" to="." method="_on_navigation_bar_home_pressed"]
+[connection signal="text_changed" from="VBoxContainer/SearchPanel/HBoxContainer/SearchBar" to="." method="_on_search_text_changed"]
+[connection signal="item_selected" from="VBoxContainer/SearchPanel/HBoxContainer/ClassificationFilter" to="." method="_on_filter_changed"]
+[connection signal="item_selected" from="VBoxContainer/SearchPanel/HBoxContainer/SortOption" to="." method="_on_sort_option_changed"]
+[connection signal="item_activated" from="VBoxContainer/EmployeeList" to="." method="_on_employee_list_item_activated"]
+[connection signal="pressed" from="VBoxContainer/ButtonsPanel/AddButton" to="." method="_on_add_button_pressed"]
