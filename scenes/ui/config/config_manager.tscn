@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://bp4pmp6ndj3uc"]
 
-[ext_resource type="Script" path="res://scripts/ui/config/config_manager.gd" id="1_cpw8v"]
-[ext_resource type="PackedScene" path="res://scenes/ui/common/navigation_bar.tscn" id="2_n8g7u"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/organization_tab.tscn" id="3_jk4tp"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/sites_tab.tscn" id="4_p27ys"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/employees_tab.tscn" id="5_k81cv"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/shift_patterns_tab.tscn" id="6_bk2md"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/overtime_tab.tscn" id="7_c83em"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/shift_offerings_tab.tscn" id="8_yxwoa"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/classifications_tab.tscn" id="9_urhj2"]
-[ext_resource type="PackedScene" path="res://scenes/ui/config/pay_periods_tab.tscn" id="10_vq8fm"]
+[ext_resource type="Script" uid="uid://cpbaysjy6k78o" path="res://scripts/ui/config/config_manager.gd" id="1_cpw8v"]
+[ext_resource type="PackedScene" uid="uid://cwltwoexcf05o" path="res://scenes/ui/common/navigation_bar.tscn" id="2_n8g7u"]
+[ext_resource type="PackedScene" uid="uid://dpigiatnol3uu" path="res://scenes/ui/config/organization_tab.tscn" id="3_jk4tp"]
+[ext_resource type="PackedScene" uid="uid://cdod0j718vc6r" path="res://scenes/ui/config/sites_tab.tscn" id="4_p27ys"]
+[ext_resource type="PackedScene" uid="uid://b7avu6pamx7ch" path="res://scenes/ui/config/employees_tab.tscn" id="5_k81cv"]
+[ext_resource type="PackedScene" uid="uid://cos0yqiax2w8s" path="res://scenes/ui/config/shift_patterns_tab.tscn" id="6_bk2md"]
+[ext_resource type="PackedScene" uid="uid://ce3gulwmex3ym" path="res://scenes/ui/config/overtime_tab.tscn" id="7_c83em"]
+[ext_resource type="PackedScene" uid="uid://db26fkcabq0hu" path="res://scenes/ui/config/shift_offerings_tab.tscn" id="8_yxwoa"]
+[ext_resource type="PackedScene" uid="uid://bkj883wl4eige" path="res://scenes/ui/config/classifications_tab.tscn" id="9_urhj2"]
+[ext_resource type="PackedScene" uid="uid://05i8g6jnbhte" path="res://scenes/ui/config/pay_periods_tab.tscn" id="10_vq8fm"]
 
 [node name="ConfigManager" type="Control"]
 layout_mode = 3
@@ -32,39 +32,57 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="OrganizationTab" parent="VBoxContainer/TabContainer" instance=ExtResource("3_jk4tp")]
+unique_name_in_owner = true
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="SitesTab" parent="VBoxContainer/TabContainer" instance=ExtResource("4_p27ys")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="EmployeesTab" parent="VBoxContainer/TabContainer" instance=ExtResource("5_k81cv")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="ShiftPatternsTab" parent="VBoxContainer/TabContainer" instance=ExtResource("6_bk2md")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="OvertimeTab" parent="VBoxContainer/TabContainer" instance=ExtResource("7_c83em")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 4
 
 [node name="ShiftOfferingsTab" parent="VBoxContainer/TabContainer" instance=ExtResource("8_yxwoa")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 5
 
 [node name="ClassificationsTab" parent="VBoxContainer/TabContainer" instance=ExtResource("9_urhj2")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 6
 
 [node name="PayPeriodsTab" parent="VBoxContainer/TabContainer" instance=ExtResource("10_vq8fm")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 7
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -83,5 +101,6 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="StatusLabel" type="Label" parent="VBoxContainer/StatusBar"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Ready."

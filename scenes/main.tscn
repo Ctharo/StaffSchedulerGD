@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://76eu3ptswdj3"]
+[gd_scene load_steps=10 format=3 uid="uid://76eu3ptswdj3"]
 
 [ext_resource type="Script" uid="uid://kmb6dr6v8rx8" path="res://scripts/ui/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://gqc6wih1ly5o" path="res://scenes/ui/loading_screen.tscn" id="2_l3xts"]
 [ext_resource type="PackedScene" uid="uid://7bhxo5n1qm0b" path="res://scenes/ui/landing_page.tscn" id="2_u5d7e"]
 [ext_resource type="Script" uid="uid://kh2ihaogd1x2" path="res://scripts/managers/schedule_manager.gd" id="3_kh29p"]
+[ext_resource type="PackedScene" uid="uid://brh44icmyjtl" path="res://scenes/ui/schedule/calendar_view.tscn" id="3_sn0mk"]
 [ext_resource type="Script" uid="uid://eptqb6ewkseh" path="res://scripts/managers/navigation_manager.gd" id="4_qj2dr"]
+[ext_resource type="PackedScene" uid="uid://c8idetpqy80nc" path="res://scenes/ui/employees/employee_list.tscn" id="5_7jpfd"]
+[ext_resource type="PackedScene" path="res://scenes/ui/employees/employee_detail.tscn" id="6_l2mrw"]
+[ext_resource type="PackedScene" uid="uid://bp4pmp6ndj3uc" path="res://scenes/ui/config/config_manager.tscn" id="7_85g3d"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -37,7 +42,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="LoadingScreen" parent="ContentContainer" instance=ExtResource("2_l3xts")]
+layout_mode = 1
+
 [node name="LandingPage" parent="ContentContainer" instance=ExtResource("2_u5d7e")]
+visible = false
+layout_mode = 1
+
+[node name="CalendarView" parent="ContentContainer" instance=ExtResource("3_sn0mk")]
+visible = false
+layout_mode = 1
+
+[node name="ConfigManager" parent="ContentContainer" instance=ExtResource("7_85g3d")]
+layout_mode = 1
+
+[node name="EmployeeList" parent="ContentContainer" instance=ExtResource("5_7jpfd")]
+visible = false
+layout_mode = 1
+
+[node name="EmployeeDetail" parent="ContentContainer" instance=ExtResource("6_l2mrw")]
+visible = false
 layout_mode = 1
 
 [node name="StatusBar" type="PanelContainer" parent="."]

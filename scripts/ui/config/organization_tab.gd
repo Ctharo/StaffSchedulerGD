@@ -69,7 +69,7 @@ func _load_industry_defaults():
 func get_config_data():
 	return {
 		"name": org_name_edit.text,
-		"industry_type": industry_type_option.get_item_text(industry_type_option.get_selected_id()).to_lower()
+		"industry_type": industry_type_option.get_item_text(industry_type_option.get_selected()).to_lower()
 	}
 
 func import_config_data(data):

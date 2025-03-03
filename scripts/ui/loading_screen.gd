@@ -196,18 +196,18 @@ func _on_fix_classifications_pressed():
 
 # Button animation methods
 func _on_button_mouse_entered(button: Button):
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.1).set_ease(Tween.EASE_OUT)
 
 func _on_button_mouse_exited(button: Button):
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN)
 
 func _on_button_pressed(button: Button):
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(button, "scale", Vector2(0.95, 0.95), 0.05).set_ease(Tween.EASE_IN)
 
 func _on_button_released(button: Button):
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.05).set_ease(Tween.EASE_OUT)
 	tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN_OUT)

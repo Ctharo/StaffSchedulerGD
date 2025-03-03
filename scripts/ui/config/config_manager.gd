@@ -4,16 +4,16 @@ extends Control
 var schedule_manager: ScheduleManager
 
 # UI References
-@onready var tab_container = $TabContainer
-@onready var organization_tab = $TabContainer/OrganizationTab
-@onready var sites_tab = $TabContainer/SitesTab
-@onready var employees_tab = $TabContainer/EmployeesTab
-@onready var shift_patterns_tab = $TabContainer/ShiftPatternsTab
-@onready var overtime_tab = $TabContainer/OvertimeTab
-@onready var shift_offerings_tab = $TabContainer/ShiftOfferingsTab
-@onready var classifications_tab = $TabContainer/ClassificationsTab
-@onready var pay_periods_tab = $TabContainer/PayPeriodsTab
-@onready var status_label = $StatusLabel
+@onready var tab_container = %TabContainer
+@onready var organization_tab = %OrganizationTab
+@onready var sites_tab = %SitesTab
+@onready var employees_tab = %EmployeesTab
+@onready var shift_patterns_tab = %ShiftPatternsTab
+@onready var overtime_tab = %OvertimeTab
+@onready var shift_offerings_tab = %ShiftOfferingsTab
+@onready var classifications_tab = %ClassificationsTab
+@onready var pay_periods_tab = %PayPeriodsTab
+@onready var status_label = %StatusLabel
 
 # Initialize
 func _ready():
