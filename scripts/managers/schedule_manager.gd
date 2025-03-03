@@ -8,13 +8,19 @@ var current_schedule: Schedule
 var file_path: String = "user://schedule_data.tres"
 var current_organization: Organization
 var organization_file_path: String = "user://organization_config.tres"
+var save_path_manager: SavePathManager
+var last_saved_time: float
+
+func _ready():
+	save_path_manager = SavePathManager.new()
+	add_child(save_path_manager)
+	
+	# Update file paths
+	file_path = save_path_manager.resolve_path("schedule_data.tres")
+	organization_file_path = save_path_manager.resolve_path("organization_config.tres")
 
 
-func start_loading() -> void:
-	load_organization()
-	load_schedule()
-	if current_schedule.sites.is_empty():
-		initialize_basic_data()
+
 
 func load_organization() -> void:
 	if ResourceLoader.exists(organization_file_path):
@@ -33,11 +39,21 @@ func load_schedule() -> void:
 		initialize_basic_data()
 	schedule_loaded.emit()
 
-
-
-func save_schedule() -> void:
-	ResourceSaver.save(current_schedule, file_path)
-
+func save_schedule() -> bool:
+	# Create backup first
+	save_path_manager.create_backup("schedule_data.tres")
+	
+	# Attempt to save
+	var error = ResourceSaver.save(current_schedule, file_path)
+	
+	if error != OK:
+		push_error("Failed to save schedule: " + str(error))
+		emit_signal("save_error", "Failed to save schedule: " + str(error))
+		return false
+	
+	emit_signal("schedule_saved")
+	return true
+	
 func save_organization() -> void:
 	ResourceSaver.save(current_organization, organization_file_path)
 
@@ -679,3 +695,35 @@ func export_schedule_to_csv(start_date: Dictionary, end_date: Dictionary) -> Str
 		current_date = TimeUtility.add_days_to_date(current_date, 1)
 	
 	return csv_content
+
+func save_all_data() -> bool:
+
+	var success = true
+	success = success and ResourceSaver.save(current_schedule, file_path) == OK
+	success = success and ResourceSaver.save(current_organization, organization_file_path) == OK
+	
+	if success:
+		# Update last saved timestamp
+		last_saved_time = Time.get_unix_time_from_system()
+	
+	return success
+
+func validate_schedule() -> Array:
+	var errors = []
+	
+	# Check for employees with invalid site assignments
+	for employee_id in current_schedule.employees:
+		var employee = current_schedule.employees[employee_id]
+		for site_id in employee.site_preferences:
+			if not current_schedule.sites.has(site_id):
+				errors.append("Employee " + employee.get_full_name() + 
+							 " has invalid site preference: " + site_id)
+	
+	# Check for shifts with invalid employees
+	for shift_id in current_schedule.shifts:
+		var shift = current_schedule.shifts[shift_id]
+		if not shift.assigned_employee_id.is_empty() and \
+		   not current_schedule.employees.has(shift.assigned_employee_id):
+			errors.append("Shift " + shift_id + " has invalid employee assignment")
+	
+	return errors
