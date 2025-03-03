@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brh44icmyjtl" path="res://scenes/ui/calendar/calendar_view.tscn" id="3_sn0mk"]
 [ext_resource type="Script" uid="uid://eptqb6ewkseh" path="res://scripts/managers/navigation_manager.gd" id="4_qj2dr"]
 [ext_resource type="PackedScene" uid="uid://c8idetpqy80nc" path="res://scenes/ui/employees/employee_list.tscn" id="5_7jpfd"]
-[ext_resource type="PackedScene" path="res://scenes/ui/employees/employee_detail.tscn" id="6_l2mrw"]
+[ext_resource type="PackedScene" uid="uid://bhh23mvc5eusl" path="res://scenes/ui/employees/employee_detail.tscn" id="6_l2mrw"]
 [ext_resource type="PackedScene" uid="uid://bp4pmp6ndj3uc" path="res://scenes/ui/config/config_manager.tscn" id="7_85g3d"]
 
 [node name="Main" type="Control"]

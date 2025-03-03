@@ -167,12 +167,12 @@ func _on_employee_selected(employee_id: String):
 
 func _on_shift_selected(shift):
 	# Display shift details in the status bar
-	status_label.text = "Selected shift: %s at %s (%s to %s)" % [
+	set_temp_message("Selected shift: %s at %s (%s to %s)" % [
 		shift.classification,
 		shift.site_id,
 		shift.start_time,
 		shift.end_time
-	]
+	])
 
 func _on_day_selected(date):
 	# Show selected date in status bar
