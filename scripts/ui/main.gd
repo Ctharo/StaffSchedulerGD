@@ -28,6 +28,9 @@ func _ready():
 	
 	# Connect loading signals
 	loading_screen.connect("loading_complete", _on_loading_complete)
+	loading_screen.connect("setup_organization", _on_setup_organization)
+	loading_screen.connect("setup_sites", _on_setup_sites)
+	loading_screen.connect("setup_employees", _on_setup_employees)
 	
 	# Connect ScheduleManager signals
 	schedule_manager.organization_loaded.connect(_on_organization_loaded)
@@ -44,6 +47,13 @@ func _start_loading_process():
 	# Update loading screen
 	loading_screen.update_progress("Loading application settings...")
 	
+	# Check setup flags for the loading screen
+	var has_organization = schedule_manager.current_organization != null and not schedule_manager.current_organization.name.is_empty()
+	var has_sites = schedule_manager.current_schedule != null and not schedule_manager.current_schedule.sites.is_empty()
+	var has_employees = schedule_manager.current_schedule != null and not schedule_manager.current_schedule.employees.is_empty()
+	
+	loading_screen.set_setup_flags(has_organization, has_sites, has_employees)
+	
 	# The ScheduleManager will automatically start loading in its _ready() function
 	# We'll receive signals when different parts are loaded
 
@@ -55,6 +65,22 @@ func _on_schedule_loaded():
 	
 	# Initialize all views now that data is loaded
 	_initialize_views()
+
+func _on_setup_organization():
+	# Navigate directly to organization setup
+	nav_manager.navigate_to("config")
+	# Ensure organization tab is selected
+	config_manager.tab_container.current_tab = 0  # Assuming organization tab is first
+
+func _on_setup_sites():
+	# Navigate directly to sites setup
+	nav_manager.navigate_to("config")
+	# Ensure sites tab is selected
+	config_manager.tab_container.current_tab = 1  # Assuming sites tab is second
+
+func _on_setup_employees():
+	# Navigate directly to employee manager
+	nav_manager.navigate_to("employee_list")
 
 func _on_configuration_error(error_message):
 	loading_screen.add_error(error_message)

@@ -27,6 +27,7 @@ var has_sites = false
 var has_employees = false
 
 func _ready():
+	# Initialize UI state
 	progress_bar.value = 0
 	progress_bar.max_value = total_steps
 	status_label.text = "Starting up..."
@@ -47,7 +48,7 @@ func update_progress(message: String):
 	progress_bar.value = current_step
 	status_label.text = message
 	
-	# If we're done, show the continue button
+	# If we're done, show appropriate UI
 	if current_step >= total_steps:
 		if errors.is_empty() and not setup_required:
 			status_label.text = "Loading complete!"
@@ -69,35 +70,38 @@ func show_continue_button():
 	continue_button.visible = true
 	button_progress.visible = true
 	
+	# Clean up any existing tweens
+	_cleanup_tweens()
+	
 	# Start the countdown tween
-	if tween:
-		tween.kill()
-	
-	if text_tween:
-		text_tween.kill()
-	
 	tween = create_tween()
 	tween.tween_property(button_progress, "value", 0, auto_continue_time)
+	tween.tween_callback(_on_continue_pressed)
 	
 	# Set up a parallel tween for text updates
 	text_tween = create_tween()
 	for i in range(int(auto_continue_time), 0, -1):
 		text_tween.tween_callback(func(): continue_button.text = "Continue (" + str(i) + ")") 
 		text_tween.tween_interval(1.0)
-	
-	# Auto-continue when tween finishes
-	tween.tween_callback(_on_continue_pressed)
+
+func _cleanup_tweens():
+	if tween:
+		if tween.is_valid():
+			tween.kill()
+		tween = null
+		
+	if text_tween:
+		if text_tween.is_valid():
+			text_tween.kill()
+		text_tween = null
 
 func show_setup_actions():
 	actions_container.visible = true
 	
 	# Clear existing action buttons
 	for child in actions_container.get_children():
-		child.queue_free()
-	
-	var setup_label = Label.new()
-	setup_label.text = "Initial setup required:"
-	actions_container.add_child(setup_label)
+		if child != actions_container.get_child(0):  # Keep the header label
+			child.queue_free()
 	
 	# Add action buttons based on what's missing
 	if not has_organization:
@@ -124,14 +128,11 @@ func show_error_actions():
 	
 	# Clear existing action buttons
 	for child in actions_container.get_children():
-		child.queue_free()
-	
-	var error_action_label = Label.new()
-	error_action_label.text = "Quick fixes available:"
-	actions_container.add_child(error_action_label)
+		if child != actions_container.get_child(0):  # Keep the header label
+			child.queue_free()
 	
 	# Add specific action buttons based on error types
-	# This would be expanded based on your specific error types
+	var added_fix_button = false
 	for error in errors:
 		if "classification" in error.to_lower():
 			_add_setup_action_button(
@@ -139,7 +140,16 @@ func show_error_actions():
 				"Setup default classifications",
 				_on_fix_classifications_pressed
 			)
+			added_fix_button = true
 			break
+	
+	# If no specific fixes are available, provide a generic continue option
+	if not added_fix_button and errors.size() > 0:
+		_add_setup_action_button(
+			"Continue Anyway", 
+			"Proceed with current configuration",
+			_on_continue_pressed
+		)
 
 func add_error(error_message: String):
 	errors.append(error_message)
@@ -166,6 +176,7 @@ func _add_setup_action_button(text: String, description: String, callback: Calla
 	var desc_label = Label.new()
 	desc_label.text = description
 	desc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hbox.add_child(desc_label)
 	
 	# Add button animations
@@ -175,39 +186,58 @@ func _add_setup_action_button(text: String, description: String, callback: Calla
 	button.button_up.connect(func(): _on_button_released(button))
 
 func _on_continue_pressed():
-	if tween:
-		tween.kill()
-	if text_tween:
-		text_tween.kill()
+	_cleanup_tweens()
 	emit_signal("loading_complete")
 
 func _on_setup_organization_pressed():
+	_cleanup_tweens()
 	emit_signal("setup_organization")
 
 func _on_setup_sites_pressed():
+	_cleanup_tweens()
 	emit_signal("setup_sites")
 
 func _on_setup_employees_pressed():
+	_cleanup_tweens()
 	emit_signal("setup_employees")
 
 func _on_fix_classifications_pressed():
-	# Implementation would handle setting default classifications
-	pass
+	# Add default classifications from organization's industry type
+	var organization = get_node("/root/Main/ScheduleManager").current_organization
+	organization.set_industry_defaults(organization.industry_type)
+	get_node("/root/Main/ScheduleManager").save_organization()
+	
+	# Remove the classification error from the list
+	for i in range(errors.size() - 1, -1, -1):
+		if "classification" in errors[i].to_lower():
+			errors.remove_at(i)
+	
+	# Update the error list
+	error_list.clear()
+	for error in errors:
+		error_list.add_item(error)
+	
+	# If no more errors, continue
+	if errors.is_empty():
+		_on_continue_pressed()
+	else:
+		# Update UI to show remaining errors
+		show_error_actions()
 
-# Button animation methods
+# Button animation methods - using separate tweens to avoid conflicts
 func _on_button_mouse_entered(button: Button):
-	tween = create_tween()
-	tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.1).set_ease(Tween.EASE_OUT)
+	var hover_tween = create_tween()
+	hover_tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.1).set_ease(Tween.EASE_OUT)
 
 func _on_button_mouse_exited(button: Button):
-	tween = create_tween()
-	tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN)
+	var exit_tween = create_tween()
+	exit_tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN)
 
 func _on_button_pressed(button: Button):
-	tween = create_tween()
-	tween.tween_property(button, "scale", Vector2(0.95, 0.95), 0.05).set_ease(Tween.EASE_IN)
+	var press_tween = create_tween()
+	press_tween.tween_property(button, "scale", Vector2(0.95, 0.95), 0.05).set_ease(Tween.EASE_IN)
 
 func _on_button_released(button: Button):
-	tween = create_tween()
-	tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.05).set_ease(Tween.EASE_OUT)
-	tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN_OUT)
+	var release_tween = create_tween()
+	release_tween.tween_property(button, "scale", Vector2(1.05, 1.05), 0.05).set_ease(Tween.EASE_OUT)
+	release_tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN_OUT)

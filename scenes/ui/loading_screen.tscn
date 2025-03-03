@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://g1wcum27im8i" path="res://scripts/ui/loading_screen.gd" id="1_qrm0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ht4o"]
-bg_color = Color(0.14902, 0.427451, 0.941176, 0.301961)
+bg_color = Color(0.2, 0.4, 0.6, 0.3)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.14902, 0.427451, 0.941176, 1)
+border_color = Color(0.3, 0.5, 0.7, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -30,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.937255, 0.945098, 0.960784, 1)
+color = Color(0.85, 0.87, 0.9, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -49,6 +49,7 @@ theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.3, 0.4, 1)
 theme_override_font_sizes/font_size = 32
 text = "StaffScheduler"
 horizontal_alignment = 1
@@ -57,6 +58,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 40)
 layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ht4o")
 max_value = 4.0
 step = 1.0
 show_percentage = false
@@ -64,6 +66,7 @@ show_percentage = false
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.35, 0.45, 1)
 theme_override_font_sizes/font_size = 18
 text = "Loading configuration..."
 horizontal_alignment = 1
@@ -72,13 +75,14 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ht4o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ErrorContainer"]
 layout_mode = 2
 
 [node name="ErrorHeader" type="Label" parent="VBoxContainer/ErrorContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
+theme_override_colors/font_color = Color(0.7, 0.2, 0.2, 1)
 text = "The following issues were detected:"
 horizontal_alignment = 1
 
@@ -86,7 +90,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
+theme_override_colors/font_color = Color(0.7, 0.2, 0.2, 1)
 auto_height = true
 
 [node name="ActionsContainer" type="VBoxContainer" parent="VBoxContainer"]
@@ -97,7 +101,7 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBoxContainer/ActionsContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.2, 0.4, 0.8, 1)
+theme_override_colors/font_color = Color(0.3, 0.5, 0.7, 1)
 theme_override_font_sizes/font_size = 16
 text = "Setup Actions:"
 
@@ -106,6 +110,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.3, 0.5, 0.7, 1)
+theme_override_colors/font_color = Color(0.25, 0.35, 0.45, 1)
 theme_override_font_sizes/font_size = 18
 text = "Continue (5)"
 

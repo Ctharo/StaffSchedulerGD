@@ -22,6 +22,7 @@ func load_organization() -> void:
 		current_organization = Organization.new("default", "Default Organization")
 		current_organization.set_industry_defaults("healthcare")
 		ResourceSaver.save(current_organization, organization_file_path)
+	organization_loaded.emit()
 
 func load_schedule() -> void:
 	if ResourceLoader.exists(file_path):
@@ -29,6 +30,7 @@ func load_schedule() -> void:
 	else:
 		current_schedule = Schedule.new()
 		initialize_basic_data()
+	schedule_loaded.emit()
 
 func save_schedule() -> void:
 	ResourceSaver.save(current_schedule, file_path)
