@@ -1,14 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://gqc6wih1ly5o"]
+[gd_scene load_steps=4 format=3 uid="uid://gqc6wih1ly5o"]
 
 [ext_resource type="Script" uid="uid://g1wcum27im8i" path="res://scripts/ui/loading_screen.gd" id="1_qrm0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ht4o"]
-bg_color = Color(0.2, 0.4, 0.6, 0.3)
+bg_color = Color(0.99558, 0.99558, 0.99558, 1)
+draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.3, 0.5, 0.7, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqdcv"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -30,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.85, 0.87, 0.9, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -49,7 +60,7 @@ theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.2, 0.3, 0.4, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "StaffScheduler"
 horizontal_alignment = 1
@@ -66,7 +77,7 @@ show_percentage = false
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.25, 0.35, 0.45, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Loading configuration..."
 horizontal_alignment = 1
@@ -110,9 +121,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_hover_color = Color(0.3, 0.5, 0.7, 1)
-theme_override_colors/font_color = Color(0.25, 0.35, 0.45, 1)
+theme_override_colors/font_hover_color = Color(0.0768357, 0.0768358, 0.0768358, 1)
+theme_override_colors/font_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rqdcv")
 text = "Continue (5)"
 
 [node name="ProgressArc" type="ProgressBar" parent="VBoxContainer/ContinueButton"]
