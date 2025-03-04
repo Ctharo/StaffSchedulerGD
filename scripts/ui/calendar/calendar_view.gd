@@ -128,6 +128,14 @@ func update_calendar():
 	# Update status
 	update_status_message()
 
+	if view_mode == "day":
+		# In day view, the current_date is the selected date
+		_update_selected_day_visual(current_date)
+	else:
+		# In week or month view, highlight today by default
+		var today = Time.get_datetime_dict_from_system()
+		_update_selected_day_visual(today)
+
 func create_calendar_grid(start_date: Dictionary, end_date: Dictionary):
 	var day_cell_scene = load("res://scenes/ui/calendar/day_cell.tscn")
 	
@@ -368,18 +376,44 @@ func _on_classification_filter_changed(index):
 	update_calendar()
 
 func _on_day_clicked(date):
+	# First emit the signal so other components can react
 	emit_signal("day_selected", date)
 	
-	# If in month or week view, maybe switch to day view focused on this date
+	# Store the selection
+	var previously_selected_date = current_date.duplicate()
+	current_date = date.duplicate()
+	
+	# If we're in month or week view, optionally switch to day view
 	if view_mode != "day":
-		current_date = date.duplicate()
 		view_mode = "day"
 		view_mode_option.select(0)  # Assuming 0 is the index for "day" in the option button
 		update_calendar()
+	else:
+		# If already in day view, just highlight the selected day
+		_update_selected_day_visual(date)
+	
+	# Update status message
+	set_msg("Selected date: %04d-%02d-%02d" % [date.year, date.month, date.day])
 	
 	# On right-click, show context menu for adding shifts
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		show_add_shift_menu(date)
+
+func _update_selected_day_visual(selected_date):
+	# Clear previous selection visual on all cells
+	for day_cell in calendar_grid.get_children():
+		day_cell.update_display()  # Reset to default style
+	
+	# Find the day cell that matches the selected date and highlight it
+	for day_cell in calendar_grid.get_children():
+		if TimeUtility.same_date(day_cell.date, selected_date):
+			var style = StyleBoxFlat.new()
+			style.bg_color = Color(0.8, 0.9, 0.8, 0.3)
+			style.border_width_all = 2
+			style.border_color = Color(0.3, 0.7, 0.3)
+			day_cell.add_theme_stylebox_override("panel", style)
+			break
+
 
 func _on_shift_clicked(shift):
 	emit_signal("shift_selected", shift)

@@ -88,7 +88,15 @@ func get_assigned_shift_count() -> int:
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Immediately emit the signal with the date
 		emit_signal("day_clicked", date)
+		
+		# Apply visual feedback for selection
+		var style = get_theme_stylebox("panel").duplicate()
+		style.bg_color = Color(0.8, 0.9, 0.8, 0.3)
+		style.border_width_all = 2
+		style.border_color = Color(0.3, 0.7, 0.3)
+		add_theme_stylebox_override("panel", style)
 
 func _on_shift_item_clicked(shift):
 	emit_signal("shift_clicked", shift)

@@ -43,6 +43,49 @@ func _ready():
 	if button_progress:
 		button_progress.value = 100
 		button_progress.visible = false
+		
+		# Fix the button style and progress arc to match
+		_setup_button_and_progress_styles()
+
+func _setup_button_and_progress_styles():
+	# Create consistent style for button
+	var button_style = StyleBoxFlat.new()
+	button_style.bg_color = Color(1, 1, 1, 1)
+	button_style.border_width_left = 2
+	button_style.border_width_top = 2
+	button_style.border_width_right = 2
+	button_style.border_width_bottom = 2
+	button_style.corner_radius_top_left = 25
+	button_style.corner_radius_top_right = 25
+	button_style.corner_radius_bottom_right = 25
+	button_style.corner_radius_bottom_left = 25
+	
+	# Create matching style for progress arc
+	var progress_style = StyleBoxFlat.new()
+	progress_style.draw_center = false  # Only show border
+	progress_style.border_width_left = 2
+	progress_style.border_width_top = 2
+	progress_style.border_width_right = 2
+	progress_style.border_width_bottom = 2
+	progress_style.corner_radius_top_left = 25
+	progress_style.corner_radius_top_right = 25
+	progress_style.corner_radius_bottom_right = 25
+	progress_style.corner_radius_bottom_left = 25
+	progress_style.border_color = Color(0.99558, 0.99558, 0.99558, 1)
+	
+	# Apply styles
+	continue_button.add_theme_stylebox_override("normal", button_style)
+	button_progress.add_theme_stylebox_override("fill", progress_style)
+	
+	# Ensure progress arc is positioned correctly
+	button_progress.anchor_right = 1.0
+	button_progress.anchor_bottom = 1.0
+	button_progress.offset_left = 0
+	button_progress.offset_top = 0
+	button_progress.offset_right = 0
+	button_progress.offset_bottom = 0
+	button_progress.show_percentage = false
+
 
 # Update progress by incrementing the step
 func update_progress(message: String):
@@ -88,7 +131,7 @@ func show_continue_button():
 	# Set up a parallel tween for text updates
 	text_tween = create_tween()
 	for i in range(int(auto_continue_time), 0, -1):
-		text_tween.tween_callback(func(): continue_button.text = "Continue (" + str(i) + ")") 
+		text_tween.tween_callback(func(): continue_button.text = "Continue (" + str(i) + ")")
 		text_tween.tween_interval(1.0)
 
 func _cleanup_tweens():
