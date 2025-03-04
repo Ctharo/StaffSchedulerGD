@@ -409,7 +409,7 @@ func _update_selected_day_visual(selected_date):
 		if TimeUtility.same_date(day_cell.date, selected_date):
 			var style = StyleBoxFlat.new()
 			style.bg_color = Color(0.8, 0.9, 0.8, 0.3)
-			style.border_width_all = 2
+			style.set_border_width_all(2)
 			style.border_color = Color(0.3, 0.7, 0.3)
 			day_cell.add_theme_stylebox_override("panel", style)
 			break
