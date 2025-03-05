@@ -92,9 +92,9 @@ func _on_gui_input(event):
 		emit_signal("day_clicked", date)
 		
 		# Apply visual feedback for selection
-		var style = get_theme_stylebox("panel").duplicate()
+		var style: StyleBoxFlat = get_theme_stylebox("panel").duplicate()
 		style.bg_color = Color(0.8, 0.9, 0.8, 0.3)
-		style.border_width_all = 2
+		style.set_border_width_all(2)
 		style.border_color = Color(0.3, 0.7, 0.3)
 		add_theme_stylebox_override("panel", style)
 
