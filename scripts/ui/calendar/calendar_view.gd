@@ -22,7 +22,6 @@ var selected_classification: String = ""
 @onready var view_mode_option = %ViewModeOption
 @onready var site_filter = %SiteFilter
 @onready var classification_filter = %ClassificationFilter
-@onready var status_label = %StatusLabel
 
 func _ready():
 	# Initialize date
@@ -30,6 +29,19 @@ func _ready():
 		
 	# Set up keyboard shortcuts
 	set_process_input(true)
+	
+	# Setup view mode dropdown with metadata
+	view_mode_option.clear()
+	view_mode_option.add_item("Day")
+	view_mode_option.set_item_metadata(0, "day")
+	view_mode_option.add_item("Week")
+	view_mode_option.set_item_metadata(1, "week")
+	view_mode_option.add_item("Month")
+	view_mode_option.set_item_metadata(2, "month")
+	
+	# Set default view mode
+	view_mode_option.select(1)  # Default to Week
+	view_mode = "week"
 
 func _input(event):
 	# Keyboard shortcuts for calendar navigation
@@ -38,29 +50,29 @@ func _input(event):
 			KEY_LEFT:
 				# Previous day/week/month
 				_on_prev_button_pressed()
-				accept_event()
+				get_viewport().set_input_as_handled()
 			KEY_RIGHT:
 				# Next day/week/month
 				_on_next_button_pressed()
-				accept_event()
+				get_viewport().set_input_as_handled()
 			KEY_UP:
 				# Change view mode (zoom out)
 				var idx = view_mode_option.selected
 				if idx > 0:
 					view_mode_option.select(idx - 1)
 					_on_view_mode_changed(idx - 1)
-				accept_event()
+				get_viewport().set_input_as_handled()
 			KEY_DOWN:
 				# Change view mode (zoom in)
 				var idx = view_mode_option.selected
 				if idx < view_mode_option.item_count - 1:
 					view_mode_option.select(idx + 1)
 					_on_view_mode_changed(idx + 1)
-				accept_event()
+				get_viewport().set_input_as_handled()
 			KEY_HOME:
 				# Today
 				_on_today_button_pressed()
-				accept_event()
+				get_viewport().set_input_as_handled()
 
 func post_initialize():
 	# Initialize navigation bar
@@ -80,8 +92,6 @@ func initialize(p_schedule_manager: ScheduleManager, p_nav_manager: NavigationMa
 	
 	# Complete initialization
 	post_initialize()
-
-
 
 func setup_filters():
 	# Set up site filter
@@ -364,6 +374,7 @@ func _on_today_button_pressed():
 	update_calendar()
 
 func _on_view_mode_changed(index):
+	# Use get_item_metadata with the appropriate index
 	view_mode = view_mode_option.get_item_metadata(index)
 	update_calendar()
 
@@ -380,7 +391,6 @@ func _on_day_clicked(date):
 	emit_signal("day_selected", date)
 	
 	# Store the selection
-	var previously_selected_date = current_date.duplicate()
 	current_date = date.duplicate()
 	
 	# If we're in month or week view, optionally switch to day view
@@ -413,7 +423,6 @@ func _update_selected_day_visual(selected_date):
 			style.border_color = Color(0.3, 0.7, 0.3)
 			day_cell.add_theme_stylebox_override("panel", style)
 			break
-
 
 func _on_shift_clicked(shift):
 	emit_signal("shift_selected", shift)
@@ -499,7 +508,6 @@ func _on_add_shift_menu_selected(id, date):
 	else:
 		# This would open a more complex shift creation dialog
 		set_msg("Multi-shift creation not implemented yet")
-
 
 func _on_navigation_bar_home_pressed() -> void:
 	nav_manager.go_home()
