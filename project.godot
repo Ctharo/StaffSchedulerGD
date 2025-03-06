@@ -15,6 +15,14 @@ run/main_scene="uid://76eu3ptswdj3"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://wnlg2hux83pm"
 
+[autoload]
+
+PDF="*res://addons/godotpdf/PDF.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godotpdf/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
