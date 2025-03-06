@@ -45,6 +45,9 @@ func _ready():
 	
 	# Start the loading process
 	_start_loading_process()
+	
+	# Generate test shifts
+	#generate_test_shifts()
 
 func _start_loading_process():
 	# Update loading screen
@@ -195,3 +198,173 @@ func _on_home_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	nav_manager.go_back()
+
+
+
+func generate_test_shifts():
+	print("Generating test shifts...")
+	
+	# Generate shifts from patterns
+	generate_shifts_from_patterns()
+	
+	# Generate random coverage shifts
+	generate_coverage_shifts()
+	
+	# Create some open shifts
+	generate_open_shifts()
+	
+	print("Test shifts generation complete!")
+
+func generate_shifts_from_patterns():
+	# Get current date and end of next month
+	var current_date = Time.get_datetime_dict_from_system()
+	var end_date = current_date.duplicate()
+	end_date.month += 1
+	if end_date.month > 12:
+		end_date.month = 1
+		end_date.year += 1
+	end_date.day = TimeUtility.days_in_month(end_date.year, end_date.month)
+	
+	# Generate shifts
+	var generated = schedule_manager.generate_shifts_for_date_range(current_date, end_date)
+	
+	print("Generated %d shifts from patterns" % [generated.size()])
+
+func generate_coverage_shifts():
+	# Get current date and end of next month
+	var current_date = Time.get_datetime_dict_from_system()
+	var end_date = current_date.duplicate()
+	end_date.month += 1
+	if end_date.month > 12:
+		end_date.month = 1
+		end_date.year += 1
+	end_date.day = TimeUtility.days_in_month(end_date.year, end_date.month)
+	
+	# Coverage reasons
+	var reasons = ["sick", "vacation", "personal", "family", "education"]
+	
+	# Get all employees by classification
+	var employees_by_class = {"RN": [], "LPN": [], "CA": []}
+	for employee_id in schedule_manager.current_schedule.employees:
+		var employee = schedule_manager.current_schedule.employees[employee_id]
+		if employees_by_class.has(employee.classification):
+			employees_by_class[employee.classification].append(employee)
+	
+	# Add some coverage shifts
+	var coverage_shift_count = 0
+	
+	# For each site
+	for site_id in ["RHH", "HH"]:
+		# Add a few random coverage shifts for each classification
+		for classification in ["RN", "LPN", "CA"]:
+			# Number of coverage shifts to create
+			var count = 5 if site_id == "RHH" else 3
+			if classification == "CA":
+				count *= 2  # More CA coverage needs typically
+			
+			for _i in range(count):
+				# Random date in the next month
+				var days_to_add = randi() % 30 + 1
+				var shift_date = TimeUtility.add_days_to_date(current_date, days_to_add)
+				
+				# Random times (day/evening/night)
+				var shift_type = randi() % 3
+				var start_time
+				var end_time
+				
+				if shift_type == 0:  # Day
+					start_time = "07:00"
+					end_time = "15:00"
+				elif shift_type == 1:  # Evening
+					start_time = "15:00"
+					end_time = "23:00"
+				else:  # Night
+					start_time = "23:00"
+					end_time = "07:00"
+				
+				# Create the shift
+				var shift = schedule_manager.create_shift(
+					site_id, classification, shift_date, start_time, end_time)
+					
+				# Mark it as coverage
+				shift.is_pattern_shift = false
+				shift.coverage_reason = reasons[randi() % reasons.size()]
+				
+				# Assign to a random employee of the right classification (60% chance)
+				if randi() % 100 < 60 and not employees_by_class[classification].empty():
+					var employee = employees_by_class[classification][randi() % employees_by_class[classification].size()]
+					if employee.can_work_at_site(site_id):
+						shift.assign_employee(employee.id)
+						
+						# Sometimes mark as overtime (30% chance)
+						if randi() % 100 < 30:
+							shift.is_overtime = true
+							shift.ot_multiplier = 1.5
+				
+				coverage_shift_count += 1
+	
+	print("Generated %d coverage shifts" % [coverage_shift_count])
+
+func generate_open_shifts():
+	# Get current date and end of next month
+	var current_date = Time.get_datetime_dict_from_system()
+	var end_date = current_date.duplicate()
+	end_date.month += 1
+	if end_date.month > 12:
+		end_date.month = 1
+		end_date.year += 1
+	end_date.day = TimeUtility.days_in_month(end_date.year, end_date.month)
+	
+	# Add some open shifts
+	var open_shift_count = 0
+	
+	# For each site
+	for site_id in ["RHH", "HH"]:
+		# Add a few random open shifts for each classification
+		for classification in ["RN", "LPN", "CA"]:
+			# Number of open shifts to create
+			var count = 4 if site_id == "RHH" else 2
+			if classification == "CA":
+				count *= 2  # More CA needs typically
+			
+			for _i in range(count):
+				# Random date in the next 14 days (more urgent needs)
+				var days_to_add = randi() % 14 + 1
+				var shift_date = TimeUtility.add_days_to_date(current_date, days_to_add)
+				
+				# Random times (day/evening/night)
+				var shift_type = randi() % 3
+				var start_time
+				var end_time
+				
+				if shift_type == 0:  # Day
+					start_time = "07:00"
+					end_time = "15:00"
+				elif shift_type == 1:  # Evening
+					start_time = "15:00"
+					end_time = "23:00"
+				else:  # Night
+					start_time = "23:00"
+					end_time = "07:00"
+				
+				# Create the shift
+				var shift = schedule_manager.create_shift(
+					site_id, classification, shift_date, start_time, end_time)
+					
+				# Ensure it's open
+				shift.status = "open"
+				
+				# Create shift offers for some of the open shifts (40% chance)
+				if randi() % 100 < 40:
+					# Find appropriate tier
+					var tier_id = ""
+					for tier in schedule_manager.current_organization.shift_offering_rules:
+						tier_id = tier.id
+						break
+					
+					if not tier_id.empty():
+						schedule_manager.create_shift_offer(shift.id, tier_id)
+				
+				open_shift_count += 1
+	
+	print("Generated %d open shifts" % [open_shift_count])
