@@ -7,6 +7,15 @@ var date: Dictionary
 var shifts = []
 var is_other_month: bool = false
 
+const STYLES: Dictionary[String, Color]= {
+	"current_day_background_color" : Color(0.8, 0.9, 0.8, 0.3)
+}
+const CURRENTDAY_BACKGROUND_COLOR := Color(0.8, 0.9, 0.8, 0.3)
+const WEEKDAY_BACKGROUND_COLOR := Color(0.95, 0.95, 0.97, 0.5)
+const DAYFROMOTHERMONTH_BACKGROUND_COLOR := Color(0.95, 0.95, 0.95, 0.3)
+
+
+
 # UI References
 @onready var day_label = $VBoxContainer/DayLabel
 @onready var shifts_container = $VBoxContainer/ScrollContainer/ShiftsContainer
@@ -15,7 +24,7 @@ var is_other_month: bool = false
 @onready var short_indicator = $VBoxContainer/StaffingIndicator/ShortLabel
 
 func _ready():
-	connect("gui_input", _on_gui_input)
+	gui_input.connect(_on_gui_input)
 	update_display()
 
 func update_display():
@@ -26,18 +35,18 @@ func update_display():
 	# Highlight current day
 	var today = Time.get_datetime_dict_from_system()
 	if TimeUtility.same_date(date, today):
-		add_theme_color_override("bg_color", Color(0.8, 0.9, 0.8, 0.3))
+		add_theme_color_override("bg_color", CURRENTDAY_BACKGROUND_COLOR)
 	
 	# Style for weekends
 	if date.has("weekday") and (date.weekday == 0 or date.weekday == 6):  # Sunday or Saturday
 		if not TimeUtility.same_date(date, today):
-			add_theme_color_override("bg_color", Color(0.95, 0.95, 0.97, 0.5))
+			add_theme_color_override("bg_color", WEEKDAY_BACKGROUND_COLOR)
 	
 	# Handle days from other months (for month view)
 	if has_meta("other_month") and get_meta("other_month", false):
 		is_other_month = true
 		day_label.modulate = Color(0.7, 0.7, 0.7)
-		add_theme_color_override("bg_color", Color(0.95, 0.95, 0.95, 0.3))
+		add_theme_color_override("bg_color", DAYFROMOTHERMONTH_BACKGROUND_COLOR)
 	
 	# Default for staffing indicators (will be updated in update_staffing_indicators)
 	full_indicator.visible = false
