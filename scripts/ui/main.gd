@@ -47,7 +47,7 @@ func _ready():
 	_start_loading_process()
 	
 	# Generate test shifts
-	#generate_test_shifts()
+	generate_test_shifts()
 
 func _start_loading_process():
 	# Update loading screen
@@ -291,7 +291,7 @@ func generate_coverage_shifts():
 				shift.coverage_reason = reasons[randi() % reasons.size()]
 				
 				# Assign to a random employee of the right classification (60% chance)
-				if randi() % 100 < 60 and not employees_by_class[classification].empty():
+				if randi() % 100 < 60 and not employees_by_class[classification].is_empty():
 					var employee = employees_by_class[classification][randi() % employees_by_class[classification].size()]
 					if employee.can_work_at_site(site_id):
 						shift.assign_employee(employee.id)
@@ -362,7 +362,7 @@ func generate_open_shifts():
 						tier_id = tier.id
 						break
 					
-					if not tier_id.empty():
+					if not tier_id.is_empty():
 						schedule_manager.create_shift_offer(shift.id, tier_id)
 				
 				open_shift_count += 1
